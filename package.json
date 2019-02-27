@@ -1,11 +1,14 @@
 {
-  "name": "eldventir_pages",
+  "name": "eldventir_front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "axios": "^0.18.0",
+    "dom-to-image": "^2.6.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
