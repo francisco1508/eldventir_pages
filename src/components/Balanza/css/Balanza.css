@@ -136,6 +136,22 @@
     border: none;
     height: 25px;
     color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+    display: inline-block;
+}
+
+.buttonAlineacionImagen{
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	width: 15px;
+	height: 15px;
+	padding-right: 10px;	
+}
+
+.buttonAlineacionTexto{
+	display: inline;
 }
 /*  buttonAgregar */
 .alignButtonAgregar{
@@ -597,7 +613,7 @@
     position: absolute;
     right: 0;
     top: 0;    
-    width: 10%;
+    width: 20%;
     height: 100%;
     display: inline-block;
 }
@@ -612,3 +628,54 @@
     left: 20%;
     
 }
+
+.buttonStudentTerminar{
+    background-color: #f06522;
+    border: none;
+    height: 25px;
+    color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+    display: inline-block;
+}
+
+.buttonStudentAlineacionImagen{
+	display:table-cell;
+    vertical-align:middle;
+    width: 15px;
+    height: 15px;
+	padding-right: 10px;	
+}
+
+.buttonStudentAlineacionImagen img{
+    padding-top: 3px;
+}
+
+.buttonStudentAlineacionTexto{
+    display:table-cell;
+    vertical-align:middle;
+}
+
+.buttonStudentDescargar{
+    background-color: #f06522;
+    border: none;
+    height: 25px;
+    color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+    display: inline-block;
+}
+
+.buttonStudentAlineacionImagenDescargar{
+	display:inline-block;
+    vertical-align:middle;
+    width: 15px;
+    height: 15px;
+	padding-right: 10px;	
+}
+
+.buttonStudentAlineacionTextoDescargar{
+    display:inline-block;
+    vertical-align:middle;
+}
+

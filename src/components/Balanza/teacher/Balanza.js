@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Balanza.css'
-import IconoTerminar from '../images/ico-terminar.png'
+import IconoTerminar from '../images/ico-terminar.svg'
 import API from '../../Global/api'
 
 class Balanza extends Component {
@@ -96,8 +96,14 @@ class Balanza extends Component {
                 <div className="alignButtonAgregar fontMBS">
                 <button type="button" className="buttonAgregar" onClick={this.addClick.bind(this)}>+ Agregar Conceptos</button>
                 </div>
-                <div className="alignButtonCSS">
-                    <button type="submit" className="buttonTerminar"><img src={IconoTerminar} alt="" />Terminar</button>
+                <div className="alignButtonCSS">                 
+                    <button 
+                        type="submit" 
+                        className="buttonStudentTerminar"
+                        >
+                        <div className="buttonStudentAlineacionImagen"><img src={IconoTerminar} alt="" /></div>
+                        <div className="buttonStudentAlineacionTexto">Terminar</div>
+                    </button>
                 </div>
             </form>
 

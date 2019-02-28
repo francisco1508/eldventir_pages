@@ -3,7 +3,8 @@ import '../css/Balanza.css';
 import BaseBalanza from '../images/Base.svg';
 import BalanzaBlanza from '../images/Balanza.svg';
 import API from '../../Global/api';
-import IconoTerminar from '../images/ico-terminar.png'
+import IconoTerminar from '../images/ico-terminar.svg'
+import IconoDescargar from '../images/ico-descarga.svg'
 import domtoimage from 'dom-to-image'
 
 
@@ -22,13 +23,7 @@ class Balanza extends Component {
         values: [
             {name: 'Positivo 1', category:'choice'},
             {name: 'Positivo 2', category:'choice'},
-            {name: 'Positivo 3', category:'choice'},
-            {name: 'Positivo 4', category:'choice'},
-            {name: 'Positivo 5', category:'choice'},
             {name: 'Negativo 1', category:'choice'},
-            {name: 'Negativo 2', category:'choice'},
-            {name: 'Negativo 3', category:'choice'},
-            {name: 'Negativo 4', category:'choice'},
         ],
         is_finish: false,
     }
@@ -89,11 +84,11 @@ class Balanza extends Component {
     };
     onDownload = (ev) =>{
         ev.preventDefault();
-        domtoimage.toJpeg(document.getElementById('balanzaStudent'), 
+        domtoimage.toPng(document.getElementById('balanzaStudent'), 
             { quality: 0.95 , bgcolor: 'white'})
         .then(function (dataUrl) {
             var link = document.createElement('a');
-            link.download = 'my-image-name.jpeg';
+            link.download = 'my-image-name.png';
             link.href = dataUrl;
             link.click();
         });
@@ -260,17 +255,24 @@ class Balanza extends Component {
                         </div>
                         <div className="balanzaStudentButton">
                             <button 
-                            type="submit" 
-                            className="buttonTerminar"
-                            onClick={(e)=>{this.onFinish(e)}}
-                            style={finishHidden}
-                            ><img src={IconoTerminar} alt="" />Terminar</button>
+                                type="submit" 
+                                className="buttonStudentTerminar"
+                                onClick={(e)=>{this.onFinish(e)}}
+                                style={finishHidden}
+                                >
+                                <div className="buttonStudentAlineacionImagen"><img src={IconoTerminar} alt="" /></div>
+                                <div className="buttonStudentAlineacionTexto">Terminar</div>
+                            </button>
+
                             <button 
-                            type="submit" 
-                            className="buttonTerminar"
-                            onClick={(e)=>{this.onDownload(e)}}
-                            style={downloadHidden}
-                            ><img src={IconoTerminar} alt="" />Descargar</button>
+                                type="submit" 
+                                className="buttonStudentDescargar"
+                                onClick={(e)=>{this.onDownload(e)}}
+                                style={downloadHidden}
+                                >
+                                <div className="buttonStudentAlineacionImagenDescargar"><img src={IconoDescargar} alt="" /></div>
+                                <div className="buttonStudentAlineacionTextoDescargar">Descargar ejercicio</div>
+                            </button>
                         </div>
                     </div>
                 </div>
