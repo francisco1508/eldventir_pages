@@ -24,6 +24,8 @@ class Balanza extends Component {
             {name: 'Positivo 1', category:'choice'},
             {name: 'Positivo 2', category:'choice'},
             {name: 'Negativo 1', category:'choice'},
+            {name: 'Negativo 2', category:'choice'},
+            {name: 'Negativo 3', category:'choice'},
         ],
         is_finish: false,
     }
@@ -96,6 +98,8 @@ class Balanza extends Component {
     render(){
         var finishHidden = {};
         var downloadHidden = {};
+        var repisaMiddle = {};
+        var repisaDown = {};
                 
         var tasks = {
             leftSide:[],
@@ -113,7 +117,7 @@ class Balanza extends Component {
                     <div className="balanzaStudentConceptText">{t.name}</div>
                  </div>
             );
-        });
+        });        
         
         let itemsSelected = tasks.leftSide.length + tasks.rightSide.length;
         let balanzaInclinacion = 'balanzaStudentBalanzaItems';
@@ -121,8 +125,7 @@ class Balanza extends Component {
         let rightSideContainer = 'balanzaStudentRightSide';
         let balanzaStudentElementsSize;
         let balanzaStudentConceptsDisplay;
-        let balanzaStudentBalanzaPosition;
-        
+        let balanzaStudentBalanzaPosition;    
 
        if(tasks.leftSide.length > tasks.rightSide.length){
             let valueLeftSide = tasks.leftSide.length / itemsSelected;
@@ -174,6 +177,17 @@ class Balanza extends Component {
             balanzaStudentConceptsDisplay = 'balanzaStudentConcepts';
             balanzaStudentBalanzaPosition = 'balanzaStudentBalanza';
        }
+
+        if(this.state.values.length > 3 && this.state.values.length < 6){
+            repisaMiddle.display = 'inline-block';
+            repisaDown.display = 'none';
+        } else if(this.state.values.length > 5 ){
+            repisaMiddle.display = 'inline-block';
+            repisaDown.display = 'inline-block';
+        } else {
+            repisaMiddle.display = 'none';
+            repisaDown.display = 'none';
+        }
 
         return(
             <div id="balanzaStudent" className="balanzaStudent">
@@ -242,12 +256,12 @@ class Balanza extends Component {
                             <div className="balanzaStudenRepisaPlace">{tasks.choice[1]}</div>
                             <div className="balanzaStudenRepisaPlace">{tasks.choice[2]}</div>
                             </div>
-                            <div className="balanzaStudentRepisa">
+                            <div className="balanzaStudentRepisa" style={repisaMiddle}>
                             <div className="balanzaStudenRepisaPlace">{tasks.choice[3]}</div>
                             <div className="balanzaStudenRepisaPlace">{tasks.choice[4]}</div>
                             <div className="balanzaStudenRepisaPlace">{tasks.choice[5]}</div>
                             </div>
-                            <div className="balanzaStudentRepisa">
+                            <div className="balanzaStudentRepisa" style={repisaDown}>
                             <div className="balanzaStudenRepisaPlace">{tasks.choice[6]}</div>
                             <div className="balanzaStudenRepisaPlace">{tasks.choice[7]}</div>
                             <div className="balanzaStudenRepisaPlace">{tasks.choice[8]}</div>
