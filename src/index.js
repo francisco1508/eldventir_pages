@@ -4,16 +4,17 @@ import { render } from 'react-dom';
 //import {BrowserRouter as Router} from 'react-router-dom';
 
 // Routes
-import AppRoutes from './routes';
+//import AppRoutes from './routes';
 
 //Assets
 import './index.css';
 
 import * as serviceWorker from './serviceWorker';
 //import Balanza from './components/Balanza/student/Balanza'
+import Dibujo from './components/Dibujo/Dibujo'
 
 render(
-    <AppRoutes/>
+    <Dibujo/>
     , document.getElementById('root')
 );
 
