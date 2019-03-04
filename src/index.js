@@ -10,11 +10,11 @@ import { render } from 'react-dom';
 import './index.css';
 
 import * as serviceWorker from './serviceWorker';
-//import Balanza from './components/Balanza/student/Balanza'
-import Dibujo from './components/Dibujo/Dibujo'
+import Balanza from './components/Balanza/student/Balanza'
+//import Dibujo from './components/Dibujo/Dibujo'
 
 render(
-    <Dibujo/>
+    <Balanza/>
     , document.getElementById('root')
 );
 
