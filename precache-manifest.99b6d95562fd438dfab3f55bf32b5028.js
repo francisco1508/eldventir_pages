@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "c88cecbffad6d8e731fd95de49561ebd",
-    "url": "/eldventir_pages/static/media/Montserrat-SemiBold.c88cecbf.ttf"
+    "revision": "100b38fa184634fc89bd07a84453992c",
+    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
   },
   {
     "revision": "2d5b16be1304f66fdcaf",
@@ -40,8 +40,8 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/js/main.2d5b16be.chunk.js"
   },
   {
-    "revision": "100b38fa184634fc89bd07a84453992c",
-    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
+    "revision": "c88cecbffad6d8e731fd95de49561ebd",
+    "url": "/eldventir_pages/static/media/Montserrat-SemiBold.c88cecbf.ttf"
   },
   {
     "revision": "88932dadc42e1bba93b21a76de60ef7a",
