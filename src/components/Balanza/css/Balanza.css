@@ -52,9 +52,7 @@
 }
 
 /* BalanzaInstructions */
-.balanzaInstructions{
-    line-height: 0.3;
-}
+
 
 .balanzaInstructions p{
     text-align : left;
@@ -168,6 +166,16 @@
     height: 25px;
     background-color: #e2e9f2;
     font-weight:bold;
+}
+
+.buttonQuitar{
+    text-align: right;
+    color: #1b586d;
+    border: none;
+    height: 25px;
+    background-color: #e2e9f2;
+    font-weight:bold;
+    padding-left: 60%;
 }
 
 /************ Balanza Student  *******************/
@@ -679,3 +687,7 @@
     vertical-align:middle;
 }
 
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

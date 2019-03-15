@@ -6,6 +6,7 @@ import Content from './components/Global/Content';
 import './App.css';
 
 class App extends Component {
+  
   render() {
     const { children } = this.props;
     return (

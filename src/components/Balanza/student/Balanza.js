@@ -2,36 +2,22 @@ import React, { Component } from 'react';
 import '../css/Balanza.css';
 import BaseBalanza from '../images/Base.svg';
 import BalanzaBlanza from '../images/Balanza.svg';
-import API from '../../Global/api';
 import IconoTerminar from '../images/ico-terminar.svg'
 import IconoDescargar from '../images/ico-descarga.svg'
-import domtoimage from 'dom-to-image'
+import domtoimage from 'dom-to-image-more'
+import axios from 'axios'
 
 
 class Balanza extends Component {
-    /*state = {
+    state = {
         values: [
             {name: '', category:'choice'},
             
         ]
-    }*/
-
-    state = {
-        description: "Coloca en cada lado de la balanza el valor positivo y negativo en cada lado",
-        right_side: "Positivo",
-        left_side: "Negativo",
-        values: [
-            {name: 'Positivo 1', category:'choice'},
-            {name: 'Positivo 2', category:'choice'},
-            {name: 'Negativo 1', category:'choice'},
-            {name: 'Negativo 2', category:'choice'},
-            {name: 'Negativo 3', category:'choice'},
-        ],
-        is_finish: false,
     }
 
-    /*componentDidMount() {
-        API.get(`tasks/`)
+    componentDidMount() {
+        axios.get(`http://localhost:8000/v1/tasks/`)
             .then(res=>{
                 const task_data = {
                     description: res.data.data.description,
@@ -46,7 +32,7 @@ class Balanza extends Component {
             .catch(error => {
                 console.log('Error', error);
             });
-    }*/
+    }
 
     onDragStart = (ev, id) =>{
         ev.dataTransfer.setData("id", id);

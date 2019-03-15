@@ -6,7 +6,7 @@ class Instructions extends Component {
             <div className="container">
                 <img src="./img/avatar.png" alt="avatar" className="avatar"/>
                 <div className="text_instructions">
-                    <img src="./img/fondo-instrucciones.png"/>
+                    <img src="./img/fondo-instrucciones.png" alt=""/>
                     <h2>INSTRUCCIONES:</h2>
                     <p>{this.props.instuctionsText}</p>
                 </div>

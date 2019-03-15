@@ -15,6 +15,7 @@ const AppRoutes = () =>
             <Route path="/balanza" component={Balanza}/>
             <Route path="/dibujo" component={Dibujo}/>
             <Route path="/mapa" component={Mapa}/>
+            <Route path="/pag" component={Page404}/>
             <Route path="/" component={Inicio}/>
             <Route component={Page404}/>
         </Switch>

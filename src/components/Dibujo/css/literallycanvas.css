@@ -1,13 +1,10 @@
-#drawingArea{
+/* #drawingArea{
     background: url('../PAINT/fondo_canvas.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-.lc-drawing canvas{
-    width: 100%!important;
-    height: 80vh!important;
-}
+} */
+
 .main_content {
     margin-top: 50px;
     padding: 0;
@@ -184,7 +181,8 @@
 }
 
 .literally .lc-picker .toolbar-button.selected:not(.disabled) {
-    background-color: transparent
+    background-color: transparent;
+    border: solid 1.3px #c0a673;
 }
 
 .literally .lc-picker .toolbar-button:hover:not(.disabled) {
@@ -434,6 +432,8 @@
     width: 100px;
     height: 25px;
     z-index: 2;
+    display: flex;
+    justify-content: space-around;
     background-color: #f06521;
     border: none;
     color: #fff
@@ -484,8 +484,38 @@ div[title="Circulo"] {
     background-image: url('../PAINT/circle.svg') !important;
 }
 
-div[title="Polygono"] {
+div[title="Polygono"],
+div[title="Triangulo"] {
     background-image: url('../PAINT/triangle.svg') !important;
+}
+.lc-drawing canvas {
+    width: 100% !important;
+    height: 80vh !important;
+    
+}
+.lc-drawing canvas.animation {
+    width: 100% !important;
+    height: 80vh !important;
+    animation: desinvolvec 10s;
+    -moz-animation: desinvolvec 10s;
+    /* Firefox */
+    -webkit-animation: desinvolvec 10s;
+    background: url('../PAINT/fondo_canvas.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@keyframes desinvolvec{
+    from {width: 0%;} 
+    to{width:100%;} 
+}
+@-moz-keyframes desinvolvec{
+    from {width: 0%;} 
+    to{width:100%;} 
+}
+@-webkit-keyframes desinvolvec{
+    from {width: 0%;} 
+    to{width:100%;} 
 }
 .rollo_izq{
     position: absolute;
@@ -497,10 +527,33 @@ div[title="Polygono"] {
 .rollo_der{
     position: absolute;
     z-index: 1;
-    right: -30px;
+    right:1290px;
     top: -52px;
     height: 96vh;
 }
+.rollo_der.animation {
+    position: absolute;
+    z-index: 1;
+    right: -30px;
+    top: -52px;
+    height: 96vh;
+    animation: desinvolve 10s;
+    -moz-animation: desinvolve 10s;
+    -webkit-animation: desinvolve 10s;
+}
+@keyframes desinvolve{
+    from {right: 1290px;} 
+    to{right:-30px;} 
+}
+@-moz-keyframes desinvolve{
+    from {right: 1290px;} 
+    to{right:-30px;} 
+}
+@-webkit-keyframes desinvolve{
+    from {right: 1290px;}
+    to {right: -30px;}
+}
+
 .cropper-container.cropper-bg{
     background: none;
     width: 100%;
@@ -557,6 +610,9 @@ div[title="Polygono"] {
     width: 35px;
     border-radius: 100%;
     margin: 3px
+}
+#colorsPallete li.active {
+    border: solid 2px #c0a673 !important;
 }
 
 .lc-color-pickers {

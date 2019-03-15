@@ -1,0 +1,140 @@
+@font-face {
+    font-family: 'Montserrat'; /*a name to be used later*/
+    src: url(../../Balanza/css/Montserrat-SemiBold.ttf);
+
+}
+@font-face {
+    font-family: 'Trattatello';
+    src: url(../../Balanza/css/Trattatello.ttf);
+}
+@font-face {
+    font-family: 'MontserratBold';
+    src: url(../../Balanza/css/Montserrat-Bold.ttf);
+}
+@font-face {
+    font-family: 'MontserratLight';
+    src: url(../../Balanza/css/Montserrat-Light.ttf);
+}
+
+.fontTB{
+    font-family: Trattatello;
+    font-size: 18pt;
+}
+.fontTS{
+    font-family: Trattatello;
+    font-size: 16pt;
+}
+.fontMB{
+    font-family: Montserrat;
+    font-size: 12pt;
+}
+.fontMBS{
+    font-family: MontserratBold;
+    font-size: 11pt;
+}
+.fontMLS{
+    font-family: MontserratLight;
+    font-size: 11pt;
+}
+
+/* Body */
+.PaintAdmin{
+    color: #1b586d;
+    width: 720px;
+    background-color: #e2e9f2;
+    padding-right: 25px;
+    padding-left: 25px;
+
+}
+.paintAdminDescription{
+    margin-bottom: 10%;
+}
+
+/* BalanzaDescription */
+.paintAdminDescription p{
+    color: #1b586d;
+    text-align : justify;
+    padding-top: 20px;
+}
+
+/* BalanzaInstructions */
+.paintAdminInstructions p{
+    text-align : left;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    font-weight:bold;
+}
+.paintAdminInstructions textarea{
+    padding-top: 2px;
+    min-width: 720px;
+    min-height: 100px;
+    max-width: 720px;
+    max-height: 100px;
+    background: none;
+    border-style: solid;
+    border-color: #1b586d;
+}
+/* BalanzaValues */
+.paintAdminValues{
+    font-weight:bold;
+    text-align: left
+}
+.paintAdminValues input{
+    width: 200px;
+}
+.divPrincipalIdea{
+    width: 50%;
+}
+
+.textPaintAdminPrincipal{
+    display: flex;
+    padding-top: 5px;
+}
+.divPrincipalIdea input{
+    background: none;
+    border-style: groove;
+    border-color: #1b586d;
+    border-width: 1px;
+    height: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 5px;
+}
+
+/*  ButtonTerminar */
+.alignButtonCSS{
+    padding-bottom: 10px;
+    text-align: right;
+    margin-top: 3%;
+}
+
+.buttonAdminPaintTerminar{
+    background-color: #f06522;
+    border: none;
+    height: 25px;
+    color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+    display: inline-block;
+}
+.buttonAdminPaintAlineacionImagen{
+	display:table-cell;
+    vertical-align:middle;
+    width: 15px;
+    height: 15px;
+	padding-right: 10px;	
+}
+
+.buttonAdminPaintAlineacionImagen img{
+    padding-top: 3px;
+}
+
+.buttonAdminPaintAlineacionTexto{
+    display:table-cell;
+    vertical-align:middle;
+}
+
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

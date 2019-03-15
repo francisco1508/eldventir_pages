@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import './page.css'
+
 
 class Page404 extends Component {
     render() {
-        return (
-            <div className="Page404">
-                <h1>Error</h1>
-            </div>
+            return (
+                <div>
+                 df
+                  
+                </div>
         );
     }
+
 }
 
 export default Page404;

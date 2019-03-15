@@ -5,14 +5,18 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "dom-to-image": "^2.6.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.3",
     "create-react-class": "^15.6.3",
+    "dom-to-image-more": "^2.7.5",
     "literallycanvas": "^0.5.2",
-    "react-dom-factories": "^1.0.2"
+    "react": "^16.4.2",
+    "react-center": "^1.1.1",
+    "react-cropper": "^1.0.1",
+    "react-dom": "^16.4.2",
+    "react-dom-factories": "^1.0.2",
+    "react-editable-label": "^1.0.1",
+    "react-lineto": "^3.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",

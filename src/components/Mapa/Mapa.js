@@ -1,41 +1,21 @@
 import React, { Component } from 'react';
-import API from '../Global/api'
+import MapaStudent from './MapaStudent'
+import MapaTeacher from './MapaTeacher'
 
-class Mapa extends Component {
-    state = {
-            
+class Mapa extends Component{
+    constructor(props){
+        super();
+        this.state = {
+            userData: 'student'
         };
-
-    componentDidMount() {
-        API.get(`tasks/`)
-            .then(res=>{
-                const task_data = {
-                    id: res.data.data.id,
-                    description: res.data.data.description,
-                    right_side: res.data.data.right_side,
-                    left_side: res.data.data.left_side,
-                    values: JSON.parse(res.data.data.values),
-                    status: res.data.data.status
-                };
-                
-                this.setState(task_data);
-                console.log(this.state);
-            })
-            .catch(error => {
-                console.log('Error', error);
-            });
     }
-
-    render() {
-        //const data = this.state.tasks;
-        return (
-            <div>
-            <ul>
-                {JSON.stringify(this.state.values)}
-                {/*{this.state.values.map((task, i)  => <li key={i}>{task.name}</li>)}*/}
-            </ul>
-            </div>
-        )
+    render(){
+        if (this.state.userData === 'teacher'){
+            return <MapaTeacher />;
+        } else{
+            return <MapaStudent />
+        }
+        
     }
 }
 

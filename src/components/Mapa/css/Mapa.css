@@ -1,0 +1,508 @@
+@font-face {
+    font-family: 'Montserrat'; /*a name to be used later*/
+    src: url(../../Balanza/css/Montserrat-SemiBold.ttf);
+}
+@font-face {
+    font-family: 'Trattatello';
+    src: url(../../Balanza/css/Trattatello.ttf);
+}
+@font-face {
+    font-family: 'MontserratBold';
+    src: url(../../Balanza/css/Montserrat-Bold.ttf);
+}
+@font-face {
+    font-family: 'MontserratLight';
+    src: url(../../Balanza/css/Montserrat-Light.ttf);
+}
+
+.fontTB{
+    font-family: Trattatello;
+    font-size: 18pt;
+}
+.fontTS{
+    font-family: Trattatello;
+    font-size: 16pt;
+}
+.fontMB{
+    font-family: Montserrat;
+    font-size: 12pt;
+}
+.fontMBS{
+    font-family: MontserratBold;
+    font-size: 11pt;
+}
+.fontMLS{
+    font-family: MontserratLight;
+    font-size: 11pt;
+}
+
+/* Body */
+.MapAdmin{
+    color: #1b586d;
+    width: 720px;
+    background-color: #e2e9f2;
+    padding-right: 25px;
+    padding-left: 25px;
+
+}
+
+/* BalanzaDescription */
+.mapAdminDescription p{
+    color: #1b586d;
+    text-align : justify;
+    padding-top: 20px;
+}
+
+/* BalanzaInstructions */
+.mapAdminInstructions p{
+    text-align : left;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    font-weight:bold;
+}
+.mapAdminInstructions textarea{
+    padding-top: 2px;
+    min-width: 720px;
+    min-height: 75px;
+    max-width: 720px;
+    max-height: 75px;
+    background: none;
+}
+/* BalanzaValues */
+.mapAdminValues{
+    font-weight:bold;
+    text-align: left
+}
+.mapAdminValues input{
+    width: 200px;
+}
+.divPrincipalIdea{
+    border-color: #1b586d;
+    width: 50%;
+}
+
+.pruebainput{
+    background: none;
+    border-style: groove;
+    border-color: #1b586d;
+    border-width: 1px;
+    height: 25px;
+    width: 50%;
+    box-sizing: border-box;
+    padding-bottom: 5px;
+}
+
+
+.textMapAdminPrincipal{
+    display: flex;
+    padding-top: 5px;
+}
+.divPrincipalIdea input{
+    background: none;
+    border-style: groove;
+    border-color: #1b586d;
+    border-width: 1px;
+    height: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 5px;
+}
+
+/*  ButtonTerminar */
+.alignButtonCSS{
+    padding-bottom: 10px;
+    text-align: right;
+}
+
+.buttonAdminMapTerminar{
+    background-color: #f06522;
+    border: none;
+    height: 25px;
+    color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+    display: inline-block;
+}
+.buttonAdminMapAlineacionImagen{
+	display:table-cell;
+    vertical-align:middle;
+    width: 15px;
+    height: 15px;
+	padding-right: 10px;	
+}
+
+.buttonAdminMapAlineacionImagen img{
+    padding-top: 3px;
+}
+
+.buttonAdminMapAlineacionTexto{
+    display:table-cell;
+    vertical-align:middle;
+}
+
+/********* Mapa Student ************/
+
+.mapStudent{
+    background-image: url("../images/Fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 93%;
+    background-position: center bottom;
+    padding: 10px;
+    width: 900px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.mapStudentBand{
+    background-image: url("../images/Personaje_balanza.png"),url("../images/fondo-instrucciones.png") ;
+    background-repeat: no-repeat;
+    background-position: 0px 0px, 50px 20px;
+    background-size: 182px 178px, 820px 176px;
+    width: 890px;
+    height: 178px;
+
+}
+
+.mapStudentText{
+    font-size: 18pt;
+    text-align: left;
+    margin-left: 25%;
+    padding-top: 15px;
+    width: 650px;
+}
+
+.mapStudentTextIns{
+    padding-top: 20px;
+}
+
+.mapStudentInstructions{
+    width: 90%;
+}
+
+.mapStudentContainer{
+    height: 500px;
+    position: relative;
+}
+
+.mapLeftSide{
+    position: absolute;
+    left: 0;
+    top: 0; 
+    width: 75%;
+    height: 100%;
+    display: inline-block;
+}
+
+.mapLeftSideFinished{
+    position: absolute;
+    left: 15%;
+    top: 0; 
+    width: 75%;
+    height: 100%;
+    display: inline-block;
+}
+
+.mapRightSide{
+    position: absolute;
+    right: 0;
+    top: 0;    
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+}
+
+.mapStudentConceptsDisplay{
+    display: inline;
+    position: absolute;
+    top: 30%;
+}
+
+.mapStudentConceptsDisplayT{
+    display: inline;
+    position: absolute;
+    top: 40%;
+}
+
+.buttonStudentTerminar{
+    background-color: #f06522;
+    border: none;
+    height: 25px;
+    color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+    display: inline-block;
+}
+
+/************** Idea Principal *********************/
+
+.principalIdea{
+    background-image: url("../images/caldero.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 96px;
+    width: 100px;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    color: white;
+    text-align: center;
+    z-index: 2;
+}
+
+/******************* Idea Segundo Nivel ********************************/
+
+
+.secondaryIdea{
+    background-image: url("../images/idea_secundaria.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 79px;
+    width: 80px;
+    text-align: center;
+    z-index: 2;
+}
+
+.secondaryIdeaFirst{
+    position: absolute;
+    top: 20%;
+    left: 42%;
+}
+
+.secondaryIdeaSecond{
+    position: absolute;
+    top: 28%;
+    left: 54%;
+}
+
+.secondaryIdeaThird{
+    position: absolute;
+    top: 42%;
+    left: 62%;
+}
+
+.secondaryIdeaFourth{
+    position: absolute;
+    top: 56%;
+    left: 54%;
+}
+
+.secondaryIdeaFifth{
+    position: absolute;
+    top: 65%;
+    left: 42%;
+}
+
+.secondaryIdeaSix{
+    position: absolute;
+    top: 56%;
+    left: 30%;
+}
+
+.secondaryIdeaSeven{
+    position: absolute;
+    top: 42%;
+    left: 21%;
+}
+
+.secondaryIdeaEight{
+    position: absolute;
+    top: 28%;
+    left: 30%;
+}
+
+/******************* Idea Tercer Nivel ********************************/
+.containerThirdIdeaHor{
+    height: 48px;
+    min-width: 45%;
+    max-width: 45%;
+    
+}
+
+.containerThirdIdeaVer{
+    width: 50px;
+    min-height: 50%;
+    max-width: 50%;
+}
+
+
+.containerThirdIdeaRig{
+    width: 50px;
+    min-height: 50%;
+    max-width: 50%;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.containerThirdIdeaRig > div{
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+}
+
+.containerThirdIdeaLef{
+    width: 50px;
+    min-height: 50%;
+    max-width: 50%;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.containerThirdIdeaLef > div{
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+
+.thirdIdea{
+    background-image: url("../images/tercera_idea.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 48px;
+    width: 50px;
+    text-align: center;
+    display: inline-flex;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    z-index: 2;
+}
+
+.thirdIdeaFirst{
+    position: absolute;
+    top:0;
+    left: 25%;
+}
+
+.thirdIdeaTwo{
+    position: absolute;
+    top:0%;
+    left: 75%;
+}
+
+.thirdIdeaThird{
+    position: absolute;
+    top:32%;
+    left: 85%;
+}
+
+.thirdIdeaFour{
+    position: absolute;
+    top:60%;
+    left: 68%;
+}
+
+.thirdIdeaFifth{
+    position: absolute;
+    top:88%;
+    left: 25%;
+}
+
+.thirdIdeaSix{
+    position: absolute;
+    top:60%;
+    left: 20%;
+}
+
+.thirdIdeaSeven{
+    position: absolute;
+    top:32%;
+    left: 0%;
+}
+
+.thirdIdeaEight{
+    position: absolute;
+    top: 0%;
+    left: 12%;
+}
+/******************* Texto Ideas ********************************/
+
+.textPrincipal{
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 12pt;
+}
+
+.textSecondary{
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 10pt;
+}
+
+.textThird{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 9pt;
+}
+
+.balanzaMapButton{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.PruebaTexto{
+   padding-top: 30%;
+   font-family: Montserrat;
+   font-size: 9pt;
+}
+
+.buttonStudentAlineacionImagen{
+	display:table-cell;
+    vertical-align:middle;
+    width: 15px;
+    height: 15px;
+	padding-right: 10px;	
+}
+
+
+.buttonStudentAlineacionTexto{
+    display:table-cell;
+    vertical-align:middle;
+}
+
+
+
+.buttonStudentChoice{
+    background-color: #f06522;
+    border: none;
+    height: 40px;
+    width: 200px;
+    color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+    display: inline-block;
+}
+
+.buttonImagenSecundario{
+    width: 30px;
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.buttonTextSecundario{
+    margin-bottom: 10px;
+    display: inline-block;
+}

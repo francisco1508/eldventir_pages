@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/Balanza.css'
 import IconoTerminar from '../images/ico-terminar.svg'
-import API from '../../Global/api'
+import axios from 'axios'
 
 class Balanza extends Component {
     constructor(props){
@@ -30,21 +30,33 @@ class Balanza extends Component {
         }
 
     }
+    remClick(){
+        if (this.state.values.length > 3){
+            var removeItems = this.state.values;
+            removeItems.pop();
+            removeItems.pop();
+            this.setState({ values: removeItems})
+        }
+
+    }
     handleSubmit = (event) => {
 
         event.preventDefault();
         
-        API.post(`tasks/`,
+        axios.post(`http://localhost:8000/v1/tasks/`,
         {
             description: this.state.description,
             right_side: this.state.right_side,
             left_side: this.state.left_side,
             values: this.state.values,
         })
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            })
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+        })
+        .catch(error => {
+            console.log('Error', error);
+        });
         
     }
 
@@ -89,12 +101,12 @@ class Balanza extends Component {
                         <input type="text" onChange={this.handleLeftSide}/>
                     </div>
                 </div>
-
             </div>
                 <hr/>
                 {this.createUI()}
                 <div className="alignButtonAgregar fontMBS">
                 <button type="button" className="buttonAgregar" onClick={this.addClick.bind(this)}>+ Agregar Conceptos</button>
+                <button type="button" className="buttonQuitar" onClick={this.remClick.bind(this)}>- Eliminar Conceptos</button>
                 </div>
                 <div className="alignButtonCSS">                 
                     <button 
