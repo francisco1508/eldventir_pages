@@ -1,19 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "100b38fa184634fc89bd07a84453992c",
-    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
+    "revision": "88932dadc42e1bba93b21a76de60ef7a",
+    "url": "/eldventir_pages/static/media/Montserrat-Bold.88932dad.ttf"
   },
   {
-    "revision": "2d5b16be1304f66fdcaf",
-    "url": "/eldventir_pages/static/css/main.f335c02b.chunk.css"
+    "revision": "736b2a4f6ada97f419d1",
+    "url": "/eldventir_pages/static/css/main.f56ffbe1.chunk.css"
   },
   {
-    "revision": "91a27830c044ec2f990a",
-    "url": "/eldventir_pages/static/js/1.91a27830.chunk.js"
+    "revision": "f90295b09a367db1b622",
+    "url": "/eldventir_pages/static/js/1.f90295b0.chunk.js"
   },
   {
     "revision": "4cbf169290ddc6cae0b9",
     "url": "/eldventir_pages/static/js/runtime~main.4cbf1692.js"
+  },
+  {
+    "revision": "93998245429b2bddf3885d142fa6a0dd",
+    "url": "/eldventir_pages/static/media/borrar.93998245.svg"
   },
   {
     "revision": "70d9d0b9bb989991ccb89a4b2cd52dfa",
@@ -36,16 +40,16 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/Personaje_balanza.a83da698.png"
   },
   {
-    "revision": "2d5b16be1304f66fdcaf",
-    "url": "/eldventir_pages/static/js/main.2d5b16be.chunk.js"
+    "revision": "736b2a4f6ada97f419d1",
+    "url": "/eldventir_pages/static/js/main.736b2a4f.chunk.js"
   },
   {
     "revision": "c88cecbffad6d8e731fd95de49561ebd",
     "url": "/eldventir_pages/static/media/Montserrat-SemiBold.c88cecbf.ttf"
   },
   {
-    "revision": "88932dadc42e1bba93b21a76de60ef7a",
-    "url": "/eldventir_pages/static/media/Montserrat-Bold.88932dad.ttf"
+    "revision": "100b38fa184634fc89bd07a84453992c",
+    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
   },
   {
     "revision": "05289e866fe7e1e99d27a7a31f8d3b66",
@@ -72,7 +76,7 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/ico-tercer.f7fa6e8b.svg"
   },
   {
-    "revision": "0abd9c170e52a20a35b0c78914c12b70",
+    "revision": "96b1012a0fd70d17507302b585ed8335",
     "url": "/eldventir_pages/index.html"
   }
 ];
