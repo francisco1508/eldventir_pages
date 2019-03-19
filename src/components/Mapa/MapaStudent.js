@@ -2,21 +2,23 @@ import React, { Component } from 'react'
 import './css/Mapa.css'
 import IconoTerminar from './images/ico-terminar.svg'
 import IconoDescargar from './images/ico-descarga.svg'
-import EditableLabel from 'react-editable-label';
+import EditableLabel from 'react-editable-label'
 import IconoSecundario from './images/ico-secundaria.svg'
 import IconoTercero from './images/ico-tercer.svg'
-import Center from 'react-center';
-import domtoimage from 'dom-to-image-more'
+import Center from 'react-center'
 import axios from 'axios'
 import LineTo, { SteppedLineTo } from 'react-lineto';
+import domtoimage from 'dom-to-image-more'
+import IconoBorrar from './images/borrar.svg'
 
-class MapaStudent extends Component{
+class MapaPrueba extends Component{
     constructor(props){
         super(props);
     this.state = {
         principal_idea:'Idea',
-        description: 'Aquí van las instrucciones, por eso coloco un ejemplo.',
+        description: '',
         is_finish: false,
+        is_delete: false,
         hidden : [
             {
                 styl: {display:'none'},
@@ -24,7 +26,6 @@ class MapaStudent extends Component{
                 nameClass: "secondaryIdea secondaryIdeaFirst",
                 noIdea: 'ideaOne',
                 styleLineTo:{
-                   
                     delay: true,
                     borderColor:"#f06522",
                     borderStyle: "dashed",
@@ -32,7 +33,8 @@ class MapaStudent extends Component{
                     orientation: "v",
                     zIndex: 1
                 },
-                classContainer: "containerThirdIdeaHor thirdIdeaFirst"
+                classContainer: "containerThirdIdeaHor thirdIdeaFirst",
+                ideaTres: 0,
             },
             {
                 styl: {display:'none'},
@@ -46,7 +48,8 @@ class MapaStudent extends Component{
                     fromAnchor: "bottom",
                     orientation: "v"
                 },
-                classContainer: "containerThirdIdeaRig thirdIdeaTwo"
+                classContainer: "containerThirdIdeaRig thirdIdeaTwo",
+                ideaTres: 0,
             },
             {
                 styl: {display:'none'},
@@ -60,7 +63,8 @@ class MapaStudent extends Component{
                     fromAnchor: "left",
                     orientation: "h"
                 },
-                classContainer: "containerThirdIdeaVer thirdIdeaThird"
+                classContainer: "containerThirdIdeaVer thirdIdeaThird",
+                ideaTres: 0,
             },
             {
                 styl: {display:'none'},
@@ -75,7 +79,8 @@ class MapaStudent extends Component{
                     toAnchor: "right",
                     orientation: "h"
                 },
-                classContainer: "containerThirdIdeaLef thirdIdeaFour"
+                classContainer: "containerThirdIdeaLef thirdIdeaFour",
+                ideaTres: 0,
             },
             {
                 styl: {display:'none'},
@@ -89,7 +94,8 @@ class MapaStudent extends Component{
                     fromAnchor: "top",
                     orientation: "v"
                 },
-                classContainer: "containerThirdIdeaHor thirdIdeaFifth"
+                classContainer: "containerThirdIdeaHor thirdIdeaFifth",
+                ideaTres: 0,
             },
             {
                 styl: {display:'none'},
@@ -103,7 +109,8 @@ class MapaStudent extends Component{
                     fromAnchor: "right",
                     orientation: "h"
                 },
-                classContainer: "containerThirdIdeaRig thirdIdeaSix"
+                classContainer: "containerThirdIdeaRig thirdIdeaSix",
+                ideaTres: 0,
             },
             {
                 styl: {display:'none'},
@@ -118,7 +125,8 @@ class MapaStudent extends Component{
                     toAnchor: "left",
                     orientation: "v"
                 },
-                classContainer: "containerThirdIdeaVer thirdIdeaSeven"
+                classContainer: "containerThirdIdeaVer thirdIdeaSeven",
+                ideaTres: 0,
             },
             {
                 styl: {display:'none'},
@@ -132,11 +140,11 @@ class MapaStudent extends Component{
                     fromAnchor: "bottom",
                     orientation: "v"
                 },
-                classContainer: "containerThirdIdeaLef thirdIdeaEight"
+                classContainer: "containerThirdIdeaLef thirdIdeaEight",
+                ideaTres: 0,
             },
         ],
-        level:[
-        ],
+        level:[],
     };
 }
 
@@ -160,6 +168,7 @@ class MapaStudent extends Component{
         copyState.map((si)=>{
             if (si.styl.display === 'none' && stop === 0){
                     si.styl = {display: 'inline'};
+                    this.activeContainer(si.noIdea);
                     stop += 1;
                 }
                 return si;
@@ -167,28 +176,36 @@ class MapaStudent extends Component{
         this.setState({hidden: copyState}); 
     }
 
-    addThirdIdea = (ev, data, clas, st) =>{
+
+    addThirdIdea = (ev) =>{
         ev.preventDefault();
-        this.activeContainer(data);
-        var flag = 0;
+        let copyState = this.state.hidden;
         var ind = this.state.level.length + 1;
-        var newIdea = {
-            idea: data, 
-            nameCI: ind.toString(),
-            classTo: clas,
-            styleLineTo:st};
-        this.state.level.map((l)=>{
-            if(l.idea === data){
-                flag +=1;
+        var newIdea = {}
+        let stop = 0;
+        copyState.map((si)=>{
+            if (si.styl.display === 'inline' && si.ideaTres < 3 && stop === 0){
+                newIdea.idea = si.noIdea;
+                newIdea.inde = si.noIdea + '-' +ind.toString();
+                this.setState({hidden: copyState,level: [...this.state.level, newIdea]});
+                
+                si.ideaTres+=1;
+                stop+=1;
             }
-            return l;
+            return si;
         });
-        if(flag < 3){
-        this.setState({level: [...this.state.level, newIdea]});}
-        else{
-            alert("Error");
-        }
     }
+
+    deleteButton = (ev) =>{
+        ev.preventDefault();
+        this.setState({is_delete: !this.state.is_delete});
+    }
+
+    disDeleteButton = (ev)=>{
+        ev.preventDefault();
+        this.setState({is_delete: false});
+    }
+
 
     activeContainer = (data) =>{
         let copyState = this.state.hidden;
@@ -216,8 +233,61 @@ class MapaStudent extends Component{
         return <div className="labelPrincipalIdea fontMB">{divlab}</div>
     }
 
+    funcionBorrarEspacio = (idea) =>{
+        let copyState = this.state.hidden;
+        copyState.map((si)=>{
+            if (si.noIdea === idea){
+                    si.ideaTres-=1;
+                }
+                return si;
+            });
+        this.setState({hidden: copyState});
+    }
+
+    verifySpace = (idea) =>{
+        let copyState = this.state.hidden;
+        var respuesta = false;
+        copyState.map((si)=>{
+            if (si.noIdea === idea && si.ideaTres < 3){
+                    si.ideaTres+=1;
+                    respuesta = true;
+                }
+                return si;
+            });
+        this.setState({hidden: copyState});
+        return respuesta;
+    }
+
+    onDragStart = (ev, data, ideaA) =>{
+        ev.dataTransfer.setData("id", data);
+        ev.dataTransfer.setData("ideaA", ideaA);
+    };
+
     onDragOver = (ev) =>{
         ev.preventDefault();
+    };
+
+    onDrop = (ev, cat) =>{
+        var copyLevel = this.state.level;
+        var resultado = this.verifySpace(cat);
+        if (!this.state.is_finish && resultado){
+            let id = ev.dataTransfer.getData("id");
+            let idA = ev.dataTransfer.getData("ideaA");
+            let levels = copyLevel.filter((ti)=>{
+                if (ti.inde === id){
+                    ti.idea=cat;
+                }
+                return ti;
+            });
+            
+            this.setState({
+                ...this.state,
+                levels
+            });
+        
+        this.funcionBorrarEspacio(idA);
+            
+        }
     };
 
     secondaryIdeaDisplay(){
@@ -234,6 +304,7 @@ class MapaStudent extends Component{
         if(this.state.is_finish){
             this.state.hidden.map((hid)=>{
                 if(hid.styl.display === 'inline'){
+                    
                     result.push(
                         <div 
                             className={hid.nameClass}
@@ -254,6 +325,9 @@ class MapaStudent extends Component{
                 }
             })
         } else{
+            var deleteButtonDisplay = {
+                display: this.state.is_delete?"inline":"none"
+            }
             this.state.hidden.map((hid)=>{
                 if(hid.styl.display === 'inline'){
                     result.push(
@@ -261,19 +335,27 @@ class MapaStudent extends Component{
                             className={hid.nameClass}
                             style={hid.styl}
                             onDragOver={(e)=>this.onDragOver(e)}
-                            onDoubleClick={(e)=>{this.addThirdIdea(e, hid.noIdea, hid.nameClass, hid.styleLineTo)}}
-                            onDrop={(e)=>{this.addThirdIdea(e, hid.noIdea, hid.nameClass, hid.styleLineTo)}}>
+                            onDrop={(e)=>{this.onDrop(e, hid.noIdea)}}
+                            onDoubleClick={(e)=>{this.deleteButton(e)}}
                             >
-                            <div className="textSecondary">
+                            <img 
+                            src={IconoBorrar} 
+                            className="imagenDeBorrado" 
+                            onClick={(e)=>{this.deleteSecondIdea(e, hid.noIdea)}}
+                            style={ deleteButtonDisplay }
+                            alt="" />
+                            <div 
+                                className="textSecondary"
+                                onClick={(e)=>{this.deleteButton(e)}}
+                            >
+                            
                                 <EditableLabel 
                                 initialValue={'Idea Secundaria'}
+                                save={value=>{
+                                    
+                                }}
                                 /> 
                             </div>
-                            <LineTo
-                            from={ hid.nameClass }
-                            to="principalIdea"
-                            {...style}
-                            />
                         </div> 
                     );
                 }
@@ -282,9 +364,6 @@ class MapaStudent extends Component{
         return result;
     }
 
-    onDragStart = (ev) =>{
-    };
-
     onFinish = (ev) =>{
         ev.preventDefault();
         this.setState({is_finish: true});
@@ -292,19 +371,76 @@ class MapaStudent extends Component{
 
     onDownload = (ev) =>{
         ev.preventDefault();
-        domtoimage.toJpeg(document.body, 
+        domtoimage.toPng(document.getElementById('mapStudent'), 
             { quality: 0.95 , bgcolor: 'white'})
         .then(function (dataUrl) {
             var link = document.createElement('a');
-            link.download = 'mindmap.jpeg';
+            
+            link.download = 'mindmap.png';
             link.href = dataUrl;
-            link.click();
+            alert(link.href);
+            //link.click();
         });
 
     }
 
+    funcionPruebas = (ejemplo, n) =>{
+
+        if (!this.state.is_finish){
+            let levels = this.state.level.filter((ti)=>{
+                if (ti.inde === n){
+                    ti.nameTI=ejemplo;
+                }
+                return ti;
+            });
+            this.setState({
+                ...this.state,
+                levels
+            });
+        }
+    }
+
+    deleteSecondIdea = (ev, idea) =>{
+        ev.preventDefault();
+        let copyState = this.state.hidden;
+        copyState.map((si)=>{
+            if (si.noIdea === idea){
+                    si.styl = {display: 'none'};
+                }
+                return si;
+            });
+        
+        let copyLevels = this.state.level.filter((ti)=>{
+            if(ti.idea !== idea){
+                return ti;
+            } else {
+                this.funcionBorrarEspacio(idea);
+            }
+        });
+        this.setState({
+            hidden: copyState,
+            level: copyLevels
+        });
+    }
+
+    deleteIdeaThird = (ev, idea, idA) =>{
+        ev.preventDefault();
+        if (!this.state.is_finish){
+            let copyLevels = this.state.level.filter((ti)=>{
+                return ti.inde !== idea;
+            });
+            this.setState({
+                level: copyLevels
+            });
+        }
+        this.funcionBorrarEspacio(idA); 
+    }
+
     render(){
 
+        var deleteButtonDisplay = {
+            display: this.state.is_delete?"inline":"none"
+        }
         var finishHidden = {};
         var downloadHidden = {};
 
@@ -332,52 +468,50 @@ class MapaStudent extends Component{
 
         this.state.hidden.forEach((t)=>{
             if(t.styl_container.display === 'inline'){
-
-            if(t.noIdea === 'ideaOne' || t.noIdea === 'ideaFive'){
-
                 containers[t.noIdea].push(
-                    <div 
+                <div 
                     className={ t.classContainer }
-                    >
-                        <Center>{ ideas[t.noIdea] }</Center>
-                    </div>
-                );
-            } else {
-                containers[t.noIdea].push(
-                    <div 
-                    className={ t.classContainer }
-                    >
-                        { ideas[t.noIdea] }
-                    </div>
-                );
+                    onDrop={(e)=>{this.onDrop(e, t.noIdea)}}
+                    onDragOver={(e)=>this.onDragOver(e)}
+                >
+                    { ideas[t.noIdea] }
+                </div>
+                );           
             }
-           
-        }
-            //containerHidden[t.noIdea] = t.styl_container;
         });  
 
         this.state.level.forEach((t, index)=>{
-            var st = t.styleLineTo;
             ideas[t.idea].push(
                 <div 
-                className="thirdIdea">
+                className="thirdIdea"
+                draggable="true"
+                onDragStart={(e)=>this.onDragStart(e, t.inde, t.idea)}
+                //onClick={(e)=>this.disDeleteButton(e)}
+                onDoubleClick={(e)=>{this.deleteButton(e)}}
+                >
                     <div className={ t.nameCI } >
-                    
-                    <Center>
-                    <div className="PruebaTexto">
-                        <EditableLabel 
-                        initialValue={'Idea Tercera'}
-                        />
-                        </div>
-                    </Center>
-                    
+                        <img 
+                            src={IconoBorrar} 
+                            className="imagenDeBorrado" 
+                            onClick={ (e)=>this.deleteIdeaThird(e,t.inde, t.idea)}
+                            style={ deleteButtonDisplay }
+                            alt="" />
+
+                        <Center>
+                            <div className="PruebaTexto"
+                            >
+                                <EditableLabel 
+                                initialValue={t.nameTI || 'Idea Tercera'}
+                                save={value => {
+                                //console.log(`Saving '${value}'`);
+                                this.funcionPruebas(value, t.inde);
+                                
+                                }}
+                                inputClass=""
+                                />
+                            </div>
+                        </Center>
                     </div>
-                    <SteppedLineTo
-                    
-                        from={ t.nameCI } to= { t.classTo }
-                        borderStyle="dashed"
-                        { ...st }
-                        />
                 </div>
             );
         });  
@@ -425,8 +559,6 @@ class MapaStudent extends Component{
                         { containers.ideaSeven }
                         { containers.ideaEight }
 
-
-                        
                     </div>
                     <div className="mapRightSide">
                         
@@ -447,7 +579,8 @@ class MapaStudent extends Component{
                             <button 
                                 className="buttonStudentChoice"
                                 type="submit"
-                                draggable="true"
+                                //draggable="true"
+                                onClick={(e)=>{this.addThirdIdea(e)}}
                                 onDragStart={(e)=>this.onDragStart(e)}
                                 >
                                 <Center>
@@ -487,4 +620,4 @@ class MapaStudent extends Component{
     }
 }
 
-export default MapaStudent;
+export default MapaPrueba;
