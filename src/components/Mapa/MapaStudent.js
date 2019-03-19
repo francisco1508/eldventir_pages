@@ -11,7 +11,7 @@ import LineTo, { SteppedLineTo } from 'react-lineto';
 import domtoimage from 'dom-to-image-more'
 import IconoBorrar from './images/borrar.svg'
 
-class MapaPrueba extends Component{
+class MapaStudent extends Component{
     constructor(props){
         super(props);
     this.state = {
@@ -508,6 +508,7 @@ class MapaPrueba extends Component{
                                 
                                 }}
                                 inputClass=""
+                                labelClass="PruebaTexto"
                                 />
                             </div>
                         </Center>
@@ -620,4 +621,4 @@ class MapaPrueba extends Component{
     }
 }
 
-export default MapaPrueba;
+export default MapaStudent;

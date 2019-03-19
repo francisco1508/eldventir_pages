@@ -466,11 +466,13 @@
 }
 
 .PruebaTexto{
-   font-family: Montserrat;
-   font-size: 9pt;
-   top: 50%;
-   right: 0;
-   left: 0;
+    font-family: Montserrat;
+    font-size: 9pt;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+
 }
 
 .buttonStudentAlineacionImagen{
