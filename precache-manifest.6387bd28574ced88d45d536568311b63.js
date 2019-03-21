@@ -44,12 +44,12 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/js/main.82051a87.chunk.js"
   },
   {
-    "revision": "100b38fa184634fc89bd07a84453992c",
-    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
-  },
-  {
     "revision": "88932dadc42e1bba93b21a76de60ef7a",
     "url": "/eldventir_pages/static/media/Montserrat-Bold.88932dad.ttf"
+  },
+  {
+    "revision": "100b38fa184634fc89bd07a84453992c",
+    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
   },
   {
     "revision": "05289e866fe7e1e99d27a7a31f8d3b66",
