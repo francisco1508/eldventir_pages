@@ -44,6 +44,7 @@
     background-color: #e2e9f2;
     padding-right: 25px;
     padding-left: 25px;
+
 }
 
 /* BalanzaDescription */
@@ -315,8 +316,7 @@
 /******************* Idea Tercer Nivel ********************************/
 .containerThirdIdeaHor{
     height: 48px;
-    min-width: 40%;
-    max-width: 40%;
+    width: 32%;
 }
 
 .containerThirdIdeaHor > div{
@@ -326,15 +326,13 @@
 
 .containerThirdIdeaVer{
     width: 50px;
-    min-height: 50%;
-    max-width: 50%;
+    height: 35%;
 }
 
 
 .containerThirdIdeaRig{
     width: 50px;
-    min-height: 50%;
-    max-width: 50%;
+    height: 35%;
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
@@ -348,13 +346,11 @@
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
-
 }
 
 .containerThirdIdeaLef{
     width: 50px;
-    min-height: 50%;
-    max-width: 50%;
+    height: 35%;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -383,32 +379,37 @@
     margin-right: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
-    z-index: 2;
+    z-index: 4;
     position: relative;
+    -ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 .thirdIdeaFirst{
     position: absolute;
-    top:0;
+    top:1%;
     left: 32%;
 }
 
 .thirdIdeaTwo{
     position: absolute;
-    top:0%;
-    left: 75%;
+    top:4%;
+    left: 72%;
 }
 
 .thirdIdeaThird{
     position: absolute;
-    top:32%;
+    top:35%;
     left: 85%;
 }
 
 .thirdIdeaFour{
     position: absolute;
-    top:60%;
-    left: 68%;
+    top:64%;
+    left: 70%;
 }
 
 .thirdIdeaFifth{
@@ -419,35 +420,37 @@
 
 .thirdIdeaSix{
     position: absolute;
-    top:60%;
-    left: 20%;
+    top:66%;
+    left: 18%;
 }
 
 .thirdIdeaSeven{
     position: absolute;
-    top:32%;
+    top:34%;
     left: 0%;
 }
 
 .thirdIdeaEight{
     position: absolute;
-    top: 0%;
-    left: 12%;
+    top: 4%;
+    left: 15%;
 }
 /******************* Texto Ideas ********************************/
 
 .textPrincipal{
-    position: absolute;
-    top: 45%;
+    position: absolute; 
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
-    font-family: Montserrat;
-    font-size: 12pt;
 }
 
 .textSecondary{
-    position: absolute;
-    top: 45%;
+    position: absolute; 
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
     font-family: Montserrat;
@@ -533,25 +536,27 @@
     position: absolute;
     right: 0;
     top: 0;
+    z-index: 4;
   }
 
 .testInputThirdIdea{
     color: black;
     width: 90px;
+    position: absolute;
+    bottom: 0;
 }
 
 .testLabelThirdIdea{
     font-family: Montserrat;
     font-size: 9pt;
-    position: absolute;
-    top: 40%;
-    left: 0;
-    right: 0;
+    position: absolute; 
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
     text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
     font-family: Montserrat;
     font-size: 9pt;
     font-weight: bold;
-    overflow-wrap: break-word;
 }
 
 .testInputPrincipalIdea{
@@ -564,7 +569,7 @@
     text-align: center;
     text-shadow: -2px -2px 1px #000, 2px 2px 1px #000, -2px 2px 1px #000, 2px -2px 1px #000;
     font-family: Montserrat;
-    font-size: 14pt;
+    font-size: 12pt;
 }
 
 .testInputSecondIdea{
@@ -575,10 +580,10 @@
 .testLabelSecondIdea{
     font-family: Montserrat;
     font-size: 12pt;
-    position: absolute;
-    top: 40%;
-    left: 0;
-    right: 0;
+    position: absolute; 
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
     text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
     font-family: Montserrat;
     font-size: 9pt;
@@ -752,14 +757,14 @@
 .itseis{
     position: absolute;
     left: 64%;
-    top: 32%;
-    width: 102px;
+    top: 30%;
+    width: 98px;
     border: 2px dashed #f06522;
-    -webkit-transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -ms-transform: rotate(-3deg);
-    -o-transform: rotate(-3deg);
-    transform: rotate(-3deg);
+    -webkit-transform: rotate(-13deg);
+    -moz-transform: rotate(-13deg);
+    -ms-transform: rotate(-13deg);
+    -o-transform: rotate(-13deg);
+    transform: rotate(-13deg);
 }
 
 .itsiete{
@@ -882,14 +887,14 @@
 .itdieco{
     position: absolute;
     left: 26%;
-    top: 79%;
-    width: 79px;
+    top: 78%;
+    width: 74px;
     border: 2px dashed #f06522;
-    -webkit-transform: rotate(-79deg);
-    -moz-transform: rotate(-79deg);
-    -ms-transform: rotate(-79deg);
-    -o-transform: rotate(-79deg);
-    transform: rotate(-79deg);
+    -webkit-transform: rotate(-70deg);
+    -moz-transform: rotate(-70deg);
+    -ms-transform: rotate(-70deg);
+    -o-transform: rotate(-70deg);
+    transform: rotate(-70deg);
 }
 .itdieci{
     position: absolute;
@@ -906,15 +911,15 @@
 
 .itdiec{
     position: absolute;
-    left: 18%;
+    left: 20%;
     top: 69%;
-    width: 86px;
+    width: 78px;
     border: 2px dashed #f06522;
-    -webkit-transform: rotate(-5deg);
-    -moz-transform: rotate(-5deg);
-    -ms-transform: rotate(-5deg);
-    -o-transform: rotate(-5deg);
-    transform: rotate(-5deg);
+    -webkit-transform: rotate(-12deg);
+    -moz-transform: rotate(-12deg);
+    -ms-transform: rotate(-12deg);
+    -o-transform: rotate(-12deg);
+    transform: rotate(-12deg);
 }
 
 .itdiece{
@@ -984,9 +989,9 @@
 
 .itveinc{
     position: absolute;
-    left: 15%;
+    left: 16%;
     top: 33%;
-    width: 104px;
+    width: 96px;
     border: 2px dashed #f06522;
     -webkit-transform: rotate(5deg);
     -moz-transform: rotate(5deg);
@@ -994,7 +999,6 @@
     -o-transform: rotate(5deg);
     transform: rotate(5deg);
 }
-
 .buttonStudentDescargar{
     background-color: #f06522;
     border: none;
