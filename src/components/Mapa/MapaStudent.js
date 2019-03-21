@@ -7,146 +7,101 @@ import IconoSecundario from './images/ico-secundaria.svg'
 import IconoTercero from './images/ico-tercer.svg'
 import Center from 'react-center'
 import axios from 'axios'
-import LineTo, { SteppedLineTo } from 'react-lineto';
-import domtoimage from 'dom-to-image-more'
+import domtoimage from 'dom-to-image'
 import IconoBorrar from './images/borrar.svg'
 
 class MapaStudent extends Component{
     constructor(props){
         super(props);
-    this.state = {
-        principal_idea:'Idea',
-        description: '',
-        is_finish: false,
-        is_delete: false,
-        hidden : [
-            {
-                styl: {display:'none'},
-                styl_container: {display:'none'},
-                nameClass: "secondaryIdea secondaryIdeaFirst",
-                noIdea: 'ideaOne',
-                styleLineTo:{
-                    delay: true,
-                    borderColor:"#f06522",
-                    borderStyle: "dashed",
-                    fromAnchor: "bottom",
-                    orientation: "v",
-                    zIndex: 1
+        this.state = {
+            principal_idea:'Idea',
+            description: '',
+            is_finish: false,
+            hidden : [
+                {
+                    styl: {display:'none'},
+                    styl_container: {display:'none'},
+                    nameClass: "secondaryIdea secondaryIdeaFirst",
+                    noIdea: 'ideaOne',
+                    classContainer: "containerThirdIdeaHor thirdIdeaFirst",
+                    ideaTres: 0,
+                    style_delete:{visibility:'hidden'},
+                    class_connection:"ispri"
                 },
-                classContainer: "containerThirdIdeaHor thirdIdeaFirst",
-                ideaTres: 0,
-            },
-            {
-                styl: {display:'none'},
-                styl_container: {display:'none'},
-                nameClass: "secondaryIdea secondaryIdeaSecond",
-                noIdea: 'ideaTwo',
-                styleLineTo:{
-                    delay: true,
-                    borderColor:"#f06522",
-                    borderStyle: "dashed",
-                    fromAnchor: "bottom",
-                    orientation: "v"
+                {
+                    styl: {display:'none'},
+                    styl_container: {display:'none'},
+                    nameClass: "secondaryIdea secondaryIdeaSecond",
+                    noIdea: 'ideaTwo',
+                    classContainer: "containerThirdIdeaRig thirdIdeaTwo",
+                    ideaTres: 0,
+                    style_delete:{visibility:'hidden'},
+                    class_connection:"isdoi"
                 },
-                classContainer: "containerThirdIdeaRig thirdIdeaTwo",
-                ideaTres: 0,
-            },
-            {
-                styl: {display:'none'},
-                styl_container: {display:'none'},
-                nameClass: "secondaryIdea secondaryIdeaThird" ,
-                noIdea: 'ideaThree',
-                styleLineTo:{
-                    delay: true,
-                    borderColor:"#f06522",
-                    borderStyle: "dashed",
-                    fromAnchor: "left",
-                    orientation: "h"
+                {
+                    styl: {display:'none'},
+                    styl_container: {display:'none'},
+                    nameClass: "secondaryIdea secondaryIdeaThird" ,
+                    noIdea: 'ideaThree',
+                    classContainer: "containerThirdIdeaVer thirdIdeaThird",
+                    ideaTres: 0,
+                    style_delete:{visibility:'hidden'},
+                    class_connection:"istri"
                 },
-                classContainer: "containerThirdIdeaVer thirdIdeaThird",
-                ideaTres: 0,
-            },
-            {
-                styl: {display:'none'},
-                styl_container: {display:'none'},
-                nameClass: "secondaryIdea secondaryIdeaFourth" ,
-                noIdea: 'ideaFour',
-                styleLineTo:{
-                    delay: true,
-                    borderColor:"#f06522",
-                    borderStyle: "dashed",
-                    fromAnchor: "left",
-                    toAnchor: "right",
-                    orientation: "h"
+                {
+                    styl: {display:'none'},
+                    styl_container: {display:'none'},
+                    nameClass: "secondaryIdea secondaryIdeaFourth" ,
+                    noIdea: 'ideaFour',
+                    classContainer: "containerThirdIdeaLef thirdIdeaFour",
+                    ideaTres: 0,
+                    style_delete:{visibility:'hidden'},
+                    class_connection:"iscui"
                 },
-                classContainer: "containerThirdIdeaLef thirdIdeaFour",
-                ideaTres: 0,
-            },
-            {
-                styl: {display:'none'},
-                styl_container: {display:'none'},
-                nameClass: "secondaryIdea secondaryIdeaFifth" ,
-                noIdea: 'ideaFive',
-                styleLineTo:{
-                    delay: true,
-                    borderColor:"#f06522",
-                    borderStyle: "dashed",
-                    fromAnchor: "top",
-                    orientation: "v"
+                {
+                    styl: {display:'none'},
+                    styl_container: {display:'none'},
+                    nameClass: "secondaryIdea secondaryIdeaFifth" ,
+                    noIdea: 'ideaFive',
+                    classContainer: "containerThirdIdeaHor thirdIdeaFifth",
+                    ideaTres: 0,
+                    style_delete:{visibility:'hidden'},
+                    class_connection:"iscii"
                 },
-                classContainer: "containerThirdIdeaHor thirdIdeaFifth",
-                ideaTres: 0,
-            },
-            {
-                styl: {display:'none'},
-                styl_container: {display:'none'},
-                nameClass: "secondaryIdea secondaryIdeaSix" ,
-                noIdea: 'ideaSix',
-                styleLineTo:{
-                    delay: true,
-                    borderColor:"#f06522",
-                    borderStyle: "dashed",
-                    fromAnchor: "right",
-                    orientation: "h"
+                {
+                    styl: {display:'none'},
+                    styl_container: {display:'none'},
+                    nameClass: "secondaryIdea secondaryIdeaSix" ,
+                    noIdea: 'ideaSix',
+                    classContainer: "containerThirdIdeaRig thirdIdeaSix",
+                    ideaTres: 0,
+                    style_delete:{visibility:'hidden'},
+                    class_connection:"issei"
                 },
-                classContainer: "containerThirdIdeaRig thirdIdeaSix",
-                ideaTres: 0,
-            },
-            {
-                styl: {display:'none'},
-                styl_container: {display:'none'},
-                nameClass: "secondaryIdea secondaryIdeaSeven" ,
-                noIdea: 'ideaSeven',
-                styleLineTo:{
-                    delay: true,
-                    borderColor:"#f06522",
-                    borderStyle: "dashed",
-                    fromAnchor: "right",
-                    toAnchor: "left",
-                    orientation: "v"
+                {
+                    styl: {display:'none'},
+                    styl_container: {display:'none'},
+                    nameClass: "secondaryIdea secondaryIdeaSeven" ,
+                    noIdea: 'ideaSeven',
+                    classContainer: "containerThirdIdeaVer thirdIdeaSeven",
+                    ideaTres: 0,
+                    style_delete:{visibility:'hidden'},
+                    class_connection:"issii"
                 },
-                classContainer: "containerThirdIdeaVer thirdIdeaSeven",
-                ideaTres: 0,
-            },
-            {
-                styl: {display:'none'},
-                styl_container: {display:'none'},
-                nameClass: "secondaryIdea secondaryIdeaEight",
-                noIdea: 'ideaEight',
-                styleLineTo:{
-                    delay: true,
-                    borderColor:"#f06522",
-                    borderStyle: "dashed",
-                    fromAnchor: "bottom",
-                    orientation: "v"
+                {
+                    styl: {display:'none'},
+                    styl_container: {display:'none'},
+                    nameClass: "secondaryIdea secondaryIdeaEight",
+                    noIdea: 'ideaEight',
+                    classContainer: "containerThirdIdeaLef thirdIdeaEight",
+                    ideaTres: 0,
+                    style_delete:{visibility:'hidden'},
+                    class_connection:"isoci"
                 },
-                classContainer: "containerThirdIdeaLef thirdIdeaEight",
-                ideaTres: 0,
-            },
-        ],
-        level:[],
-    };
-}
+            ],
+            level:[],
+        };
+    }
 
     componentDidMount() {
         axios.get(`http://localhost:8000/v1/mentals/`)
@@ -176,7 +131,6 @@ class MapaStudent extends Component{
         this.setState({hidden: copyState}); 
     }
 
-
     addThirdIdea = (ev) =>{
         ev.preventDefault();
         let copyState = this.state.hidden;
@@ -187,25 +141,18 @@ class MapaStudent extends Component{
             if (si.styl.display === 'inline' && si.ideaTres < 3 && stop === 0){
                 newIdea.idea = si.noIdea;
                 newIdea.inde = si.noIdea + '-' +ind.toString();
-                this.setState({hidden: copyState,level: [...this.state.level, newIdea]});
-                
+                newIdea.nameTI = 'Idea Tercera';
+                newIdea.style_delete = {display:'none'}
+                this.setState({
+                    hidden: copyState,
+                    level: [...this.state.level, newIdea]
+                });
                 si.ideaTres+=1;
                 stop+=1;
             }
             return si;
         });
     }
-
-    deleteButton = (ev) =>{
-        ev.preventDefault();
-        this.setState({is_delete: !this.state.is_delete});
-    }
-
-    disDeleteButton = (ev)=>{
-        ev.preventDefault();
-        this.setState({is_delete: false});
-    }
-
 
     activeContainer = (data) =>{
         let copyState = this.state.hidden;
@@ -226,39 +173,79 @@ class MapaStudent extends Component{
             save={value=>{
                     this.setState({principal_idea:value})
                 }}
+                inputClass="testInputPrincipalIdea"
+                labelClass="testLabelPrincipalIdea"
             />
         } else {
             divlab = <label>{this.state.principal_idea}</label>      
         }
-        return <div className="labelPrincipalIdea fontMB">{divlab}</div>
+        return <div className="labelPrincipalIdea">{divlab}</div>
     }
 
-    funcionBorrarEspacio = (idea) =>{
-        let copyState = this.state.hidden;
-        copyState.map((si)=>{
-            if (si.noIdea === idea){
-                    si.ideaTres-=1;
+    secondaryIdeaDisplay(){
+
+        var result = [];
+
+        if(this.state.is_finish){
+            this.state.hidden.map((hid)=>{
+                if(hid.styl.display === 'inline'){
+                    result.push(
+                        <div 
+                            className={hid.nameClass}
+                            style={hid.styl}
+                         >
+                            <div className="textSecondary">
+                                <EditableLabel 
+                                initialValue={'Idea Secundaria'}
+                                /> 
+                            </div>
+                            <hr className={hid.class_connection}></hr>
+                        </div> 
+                    );
                 }
-                return si;
-            });
-        this.setState({hidden: copyState});
-    }
-
-    verifySpace = (idea) =>{
-        let copyState = this.state.hidden;
-        var respuesta = false;
-        copyState.map((si)=>{
-            if (si.noIdea === idea && si.ideaTres < 3){
-                    si.ideaTres+=1;
-                    respuesta = true;
+            })
+        } else{
+            this.state.hidden.map((hid)=>{
+                if(hid.styl.display === 'inline'){
+                    result.push(
+                        <div 
+                            className={hid.nameClass}
+                            style={hid.styl}
+                            onDragOver={(e)=>this.onDragOver(e)}
+                            onDrop={(e)=>{this.onDrop(e, hid.noIdea)}}
+                            //onMouseOut={(e)=>{this.disDeleteButtonSecond(e,hid.noIdea);}}
+                            onClick={(e)=>{this.deleteButtonSecond(e, hid.noIdea)}}
+                            >
+                            <img 
+                            src={IconoBorrar} 
+                            className="imagenDeBorrado" 
+                            onClick={(e)=>{this.deleteSecondIdea(e, hid.noIdea)}}
+                            //onMouseOver={(e)=>{this.deleteButtonSecond(e, hid.noIdea)}}
+                            style={ hid.style_delete }
+                            alt="" />
+                            <div 
+                                className="textSecondary"
+                                
+                            >
+                                <EditableLabel 
+                                initialValue={'Idea Secundaria'}
+                                save={value=>{
+                                    
+                                }}
+                                labelClass="testLabelSecondIdea"
+                                inputClass="testInputSecondIdea"
+                                /> 
+                            </div>
+                            <hr className={hid.class_connection}></hr>
+                        </div> 
+                    );
                 }
-                return si;
-            });
-        this.setState({hidden: copyState});
-        return respuesta;
+            })
+        }
+        return result;
     }
 
-    onDragStart = (ev, data, ideaA) =>{
+    onDragStart = (ev, data, ideaA,prueba) =>{
         ev.dataTransfer.setData("id", data);
         ev.dataTransfer.setData("ideaA", ideaA);
     };
@@ -279,109 +266,37 @@ class MapaStudent extends Component{
                 }
                 return ti;
             });
-            
             this.setState({
                 ...this.state,
                 levels
             });
-        
         this.funcionBorrarEspacio(idA);
-            
         }
     };
 
-    secondaryIdeaDisplay(){
-
-        var result = [];
-
-        const style = {
-            delay: true,
-            borderColor:"#f06522",
-            borderStyle: "dashed",
-            borderWidth: "2px"
-        };
-
-        if(this.state.is_finish){
-            this.state.hidden.map((hid)=>{
-                if(hid.styl.display === 'inline'){
-                    
-                    result.push(
-                        <div 
-                            className={hid.nameClass}
-                            style={hid.styl}
-                            >
-                            <div className="textSecondary">
-                                <EditableLabel 
-                                initialValue={'Idea Secundaria'}
-                                /> 
-                            </div>
-                            <LineTo
-                            from={ hid.nameClass }
-                            to="principalIdea"
-                            {...style}
-                            />
-                        </div> 
-                    );
+    funcionBorrarEspacio = (idea) =>{
+        let copyState = this.state.hidden;
+        copyState.map((si)=>{
+            if (si.noIdea === idea){
+                si.ideaTres-=1;  
                 }
-            })
-        } else{
-            var deleteButtonDisplay = {
-                display: this.state.is_delete?"inline":"none"
-            }
-            this.state.hidden.map((hid)=>{
-                if(hid.styl.display === 'inline'){
-                    result.push(
-                        <div 
-                            className={hid.nameClass}
-                            style={hid.styl}
-                            onDragOver={(e)=>this.onDragOver(e)}
-                            onDrop={(e)=>{this.onDrop(e, hid.noIdea)}}
-                            onDoubleClick={(e)=>{this.deleteButton(e)}}
-                            >
-                            <img 
-                            src={IconoBorrar} 
-                            className="imagenDeBorrado" 
-                            onClick={(e)=>{this.deleteSecondIdea(e, hid.noIdea)}}
-                            style={ deleteButtonDisplay }
-                            alt="" />
-                            <div 
-                                className="textSecondary"
-                                onClick={(e)=>{this.deleteButton(e)}}
-                            >
-                            
-                                <EditableLabel 
-                                initialValue={'Idea Secundaria'}
-                                save={value=>{
-                                    
-                                }}
-                                /> 
-                            </div>
-                        </div> 
-                    );
-                }
-            })
-        }
-        return result;
+                return si;
+            });
+        this.setState({hidden: copyState});
     }
 
-    onFinish = (ev) =>{
-        ev.preventDefault();
-        this.setState({is_finish: true});
-    };
-
-    onDownload = (ev) =>{
-        ev.preventDefault();
-        domtoimage.toPng(document.getElementById('mapStudent'), 
-            { quality: 0.95 , bgcolor: 'white'})
-        .then(function (dataUrl) {
-            var link = document.createElement('a');
-            
-            link.download = 'mindmap.png';
-            link.href = dataUrl;
-            alert(link.href);
-            //link.click();
-        });
-
+    verifySpace = (idea) =>{
+        let copyState = this.state.hidden;
+        var respuesta = false;
+        copyState.map((si)=>{
+            if (si.noIdea === idea && si.ideaTres < 3){
+                    si.ideaTres+=1;
+                    respuesta = true;
+                }
+                return si;
+            });
+        this.setState({hidden: copyState});
+        return respuesta;
     }
 
     funcionPruebas = (ejemplo, n) =>{
@@ -406,6 +321,7 @@ class MapaStudent extends Component{
         copyState.map((si)=>{
             if (si.noIdea === idea){
                     si.styl = {display: 'none'};
+                    si.style_delete = {display: 'none'};
                 }
                 return si;
             });
@@ -436,11 +352,75 @@ class MapaStudent extends Component{
         this.funcionBorrarEspacio(idA); 
     }
 
-    render(){
+    deleteButtonSecond = (ev, idea) =>{
+        ev.preventDefault();
+        let copyState = this.state.hidden;
+        copyState.map((si)=>{
+            if (si.noIdea === idea){
+                if(si.style_delete.visibility==='hidden'){
+                    si.style_delete={visibility:'visible'};
+                }  
+            }
+            return si;
+        });
+        this.setState({hidden: copyState});
+    }
 
-        var deleteButtonDisplay = {
-            display: this.state.is_delete?"inline":"none"
-        }
+    disDeleteButtonSecond = (ev, idea) =>{
+        ev.preventDefault();
+        let copyState = this.state.hidden;
+        copyState.map((si)=>{
+            if (si.noIdea === idea){
+                if(si.style_delete.visibility==='visible'){
+                    si.style_delete={visibility:'hidden'};
+                } 
+            }
+            return si;
+        });
+        this.setState({hidden: copyState});
+    }
+
+    deleteButtonThird = (ev, idea) =>{
+        ev.preventDefault();
+        let copyState = this.state.level;
+        copyState.map((si)=>{
+            if (si.inde === idea){
+                if(si.style_delete.display==='none'){
+                    si.style_delete={display:'inline'};
+                } else{
+                    si.style_delete={display:'none'};
+                }     
+            }
+            return si;
+        });
+        this.setState({level: copyState});
+    }
+
+    onFinish = (ev) =>{
+        ev.preventDefault();
+        this.setState({is_finish: true});
+    };
+
+    onDownload = (ev) =>{
+        ev.preventDefault();
+        domtoimage.toPng(document.getElementById('mapStudent'), 
+            { quality: 0.95 , bgcolor: 'white'})
+        .then(function (dataUrl) {
+            var link = document.createElement('a');
+            
+            link.download = 'mindmap.png';
+            link.href = dataUrl;
+            alert(link.href);
+            //link.click();
+        });
+    }
+
+    imprimirNombre = (ev, data) =>{
+        ev.preventDefault();
+        console.log(data);
+    }
+
+    render(){
         var finishHidden = {};
         var downloadHidden = {};
 
@@ -466,6 +446,28 @@ class MapaStudent extends Component{
             ideaEight:[],
         }
 
+        var classes_connections = {
+            ideaOne:["ituno","itdos","ittres"],
+            ideaTwo:["itcuatro", "itcinco", "itseis"],
+            ideaThree:["itsiete", "itocho", "itnueve"],
+            ideaFour:["itdiez","itonce","itdoce"],
+            ideaFive:["ittrece","itcator","itquinc"],
+            ideaSix:["itdiec", "itdieci", "itdieco"],
+            ideaSeven:["itdiece", "itveint", "itveino"],
+            ideaEight:["itveind", "itveinr", "itveinc"],
+        }
+
+        var connections = {
+            ideaOne:[],
+            ideaTwo:[],
+            ideaThree:[],
+            ideaFour:[],
+            ideaFive:[],
+            ideaSix:[],
+            ideaSeven:[],
+            ideaEight:[],
+        }
+
         this.state.hidden.forEach((t)=>{
             if(t.styl_container.display === 'inline'){
                 containers[t.noIdea].push(
@@ -480,35 +482,34 @@ class MapaStudent extends Component{
             }
         });  
 
-        this.state.level.forEach((t, index)=>{
+        this.state.level.forEach((t)=>{
+            //console.log(t.nameTI);
             ideas[t.idea].push(
                 <div 
                 className="thirdIdea"
                 draggable="true"
-                onDragStart={(e)=>this.onDragStart(e, t.inde, t.idea)}
-                //onClick={(e)=>this.disDeleteButton(e)}
-                onDoubleClick={(e)=>{this.deleteButton(e)}}
+                onDragStart={(e)=>this.onDragStart(e, t.inde, t.idea, t.nameTI)}
+                onDoubleClick={(e)=>{this.deleteButtonThird(e, t.inde)}}
+                onClick={(e)=>{this.imprimirNombre(e, t.nameTI)}}
                 >
                     <div className={ t.nameCI } >
                         <img 
                             src={IconoBorrar} 
                             className="imagenDeBorrado" 
                             onClick={ (e)=>this.deleteIdeaThird(e,t.inde, t.idea)}
-                            style={ deleteButtonDisplay }
+                            style={ t.style_delete }
                             alt="" />
 
                         <Center>
-                            <div className="PruebaTexto"
-                            >
+                            <div className="PruebaTexto">
                                 <EditableLabel 
-                                initialValue={t.nameTI || 'Idea Tercera'}
+                                initialValue={t.nameTI}
                                 save={value => {
                                 //console.log(`Saving '${value}'`);
                                 this.funcionPruebas(value, t.inde);
-                                
                                 }}
-                                inputClass=""
-                                labelClass="PruebaTexto"
+                                inputClass="testInputThirdIdea"
+                                labelClass="testLabelThirdIdea"
                                 />
                             </div>
                         </Center>
@@ -517,18 +518,66 @@ class MapaStudent extends Component{
             );
         });  
 
+        ideas.ideaOne.forEach((t, index)=>{
+            connections.ideaOne.push(
+                <hr className={classes_connections.ideaOne[index]}></hr>
+            );
+        });
+
+        ideas.ideaTwo.forEach((t, index)=>{
+            connections.ideaTwo.push(
+                <hr className={classes_connections.ideaTwo[index]}></hr>
+            );
+        });
+
+        ideas.ideaThree.forEach((t, index)=>{
+            connections.ideaThree.push(
+                <hr className={classes_connections.ideaThree[index]}></hr>
+            );
+        });
+
+        ideas.ideaFour.forEach((t, index)=>{
+            connections.ideaFour.push(
+                <hr className={classes_connections.ideaFour[index]}></hr>
+            );
+        });
+
+        ideas.ideaFive.forEach((t, index)=>{
+            connections.ideaFive.push(
+                <hr className={classes_connections.ideaFive[index]}></hr>
+            );
+        });
+
+        ideas.ideaSix.forEach((t, index)=>{
+            connections.ideaSix.push(
+                <hr className={classes_connections.ideaSix[index]}></hr>
+            );
+        });
+
+        ideas.ideaSeven.forEach((t, index)=>{
+            connections.ideaSeven.push(
+                <hr className={classes_connections.ideaSeven[index]}></hr>
+            );
+        });
+
+        ideas.ideaEight.forEach((t, index)=>{
+            connections.ideaEight.push(
+                <hr className={classes_connections.ideaEight[index]}></hr>
+            );
+        });
 
         if(this.state.is_finish){
             finishHidden.display = 'none';
             downloadHidden.display = 'inline';
         } else {
-        finishHidden.display = 'inline';
-        downloadHidden.display = 'none';
+            finishHidden.display = 'inline';
+            downloadHidden.display = 'none';
         }
+
+
 
         return (
             <div id="mapStudent" className="mapStudent">
-
                 <div className="mapStudentBand">
                     <div className="mapStudentText">
                         <div className="mapStudentTextIns fontTB">
@@ -542,7 +591,7 @@ class MapaStudent extends Component{
                 <div id="mapStudentContainer" className="mapStudentContainer">
                     <div 
                         className={ this.state.is_finish? "mapLeftSideFinished": "mapLeftSide" }
-                        >
+                    >
                         <div className="principalIdea">
                             <div className="textPrincipal">
                                 { this.IdeaPrincipal() }
@@ -560,10 +609,18 @@ class MapaStudent extends Component{
                         { containers.ideaSeven }
                         { containers.ideaEight }
 
+                        { connections.ideaOne }
+                        { connections.ideaTwo }
+                        { connections.ideaThree }
+                        { connections.ideaFour }
+                        { connections.ideaFive }
+                        { connections.ideaSix }
+                        { connections.ideaSeven }
+                        { connections.ideaEight }
+
                     </div>
                     <div className="mapRightSide">
-                        
-
+                    
                         <div className="mapStudentConceptsDisplay" style={finishHidden}>
                             <button 
                                 className="buttonStudentChoice"
