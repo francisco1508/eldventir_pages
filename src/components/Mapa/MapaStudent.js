@@ -25,7 +25,7 @@ class MapaStudent extends Component{
                     noIdea: 'ideaOne',
                     classContainer: "containerThirdIdeaHor thirdIdeaFirst",
                     ideaTres: 0,
-                    style_delete:{visibility:'hidden'},
+                    style_delete:{visibility: 'hidden'},
                     class_connection:"ispri"
                 },
                 {
@@ -35,7 +35,7 @@ class MapaStudent extends Component{
                     noIdea: 'ideaTwo',
                     classContainer: "containerThirdIdeaRig thirdIdeaTwo",
                     ideaTres: 0,
-                    style_delete:{visibility:'hidden'},
+                    style_delete:{visibility: 'hidden'},
                     class_connection:"isdoi"
                 },
                 {
@@ -45,7 +45,7 @@ class MapaStudent extends Component{
                     noIdea: 'ideaThree',
                     classContainer: "containerThirdIdeaVer thirdIdeaThird",
                     ideaTres: 0,
-                    style_delete:{visibility:'hidden'},
+                    style_delete:{visibility: 'hidden'},
                     class_connection:"istri"
                 },
                 {
@@ -55,7 +55,7 @@ class MapaStudent extends Component{
                     noIdea: 'ideaFour',
                     classContainer: "containerThirdIdeaLef thirdIdeaFour",
                     ideaTres: 0,
-                    style_delete:{visibility:'hidden'},
+                    style_delete:{visibility: 'hidden'},
                     class_connection:"iscui"
                 },
                 {
@@ -65,7 +65,7 @@ class MapaStudent extends Component{
                     noIdea: 'ideaFive',
                     classContainer: "containerThirdIdeaHor thirdIdeaFifth",
                     ideaTres: 0,
-                    style_delete:{visibility:'hidden'},
+                    style_delete:{visibility: 'hidden'},
                     class_connection:"iscii"
                 },
                 {
@@ -75,7 +75,7 @@ class MapaStudent extends Component{
                     noIdea: 'ideaSix',
                     classContainer: "containerThirdIdeaRig thirdIdeaSix",
                     ideaTres: 0,
-                    style_delete:{visibility:'hidden'},
+                    style_delete:{visibility: 'hidden'},
                     class_connection:"issei"
                 },
                 {
@@ -85,7 +85,7 @@ class MapaStudent extends Component{
                     noIdea: 'ideaSeven',
                     classContainer: "containerThirdIdeaVer thirdIdeaSeven",
                     ideaTres: 0,
-                    style_delete:{visibility:'hidden'},
+                    style_delete:{visibility: 'hidden'},
                     class_connection:"issii"
                 },
                 {
@@ -95,7 +95,7 @@ class MapaStudent extends Component{
                     noIdea: 'ideaEight',
                     classContainer: "containerThirdIdeaLef thirdIdeaEight",
                     ideaTres: 0,
-                    style_delete:{visibility:'hidden'},
+                    style_delete:{visibility: 'hidden'},
                     class_connection:"isoci"
                 },
             ],
@@ -169,7 +169,7 @@ class MapaStudent extends Component{
         var divlab;
         if(this.state.principal_idea === 'Idea'){
             divlab = <EditableLabel 
-            initialValue={'Idea'}
+            initialValue={'Idea Principal'}
             save={value=>{
                     this.setState({principal_idea:value})
                 }}
@@ -179,8 +179,10 @@ class MapaStudent extends Component{
         } else {
             divlab = <label>{this.state.principal_idea}</label>      
         }
-        return <div className="labelPrincipalIdea">{divlab}</div>
+        return <div className="testLabelPrincipalIdea">{divlab}</div>
     }
+
+
 
     secondaryIdeaDisplay(){
 
@@ -213,24 +215,21 @@ class MapaStudent extends Component{
                             style={hid.styl}
                             onDragOver={(e)=>this.onDragOver(e)}
                             onDrop={(e)=>{this.onDrop(e, hid.noIdea)}}
-                            //onMouseOut={(e)=>{this.disDeleteButtonSecond(e,hid.noIdea);}}
-                            onClick={(e)=>{this.deleteButtonSecond(e, hid.noIdea)}}
                             >
                             <img 
                             src={IconoBorrar} 
                             className="imagenDeBorrado" 
-                            onClick={(e)=>{this.deleteSecondIdea(e, hid.noIdea)}}
-                            //onMouseOver={(e)=>{this.deleteButtonSecond(e, hid.noIdea)}}
+                            onClick={(e)=>{this.deleteSecondIdea(e, hid.noIdea)}}                            
                             style={ hid.style_delete }
                             alt="" />
                             <div 
                                 className="textSecondary"
-                                
+                                onClick={(e)=>{this.deleteButtonSecond(e, hid.noIdea)}}
                             >
                                 <EditableLabel 
                                 initialValue={'Idea Secundaria'}
                                 save={value=>{
-                                    
+                                    this.disDeleteButtonSecond(hid.noIdea)
                                 }}
                                 labelClass="testLabelSecondIdea"
                                 inputClass="testInputSecondIdea"
@@ -300,18 +299,15 @@ class MapaStudent extends Component{
     }
 
     funcionPruebas = (ejemplo, n) =>{
-
         if (!this.state.is_finish){
             let levels = this.state.level.filter((ti)=>{
                 if (ti.inde === n){
                     ti.nameTI=ejemplo;
+                    ti.style_delete={display:'none'};
                 }
                 return ti;
             });
-            this.setState({
-                ...this.state,
-                levels
-            });
+            setTimeout(()=>this.setState({level: levels}), 100);
         }
     }
 
@@ -321,7 +317,7 @@ class MapaStudent extends Component{
         copyState.map((si)=>{
             if (si.noIdea === idea){
                     si.styl = {display: 'none'};
-                    si.style_delete = {display: 'none'};
+                    si.style_delete = {visibility: 'hidden'};
                 }
                 return si;
             });
@@ -345,9 +341,10 @@ class MapaStudent extends Component{
             let copyLevels = this.state.level.filter((ti)=>{
                 return ti.inde !== idea;
             });
-            this.setState({
+            setTimeout(()=>this.setState({
                 level: copyLevels
-            });
+            }), 101);
+
         }
         this.funcionBorrarEspacio(idA); 
     }
@@ -366,8 +363,7 @@ class MapaStudent extends Component{
         this.setState({hidden: copyState});
     }
 
-    disDeleteButtonSecond = (ev, idea) =>{
-        ev.preventDefault();
+    disDeleteButtonSecond = (idea) =>{
         let copyState = this.state.hidden;
         copyState.map((si)=>{
             if (si.noIdea === idea){
@@ -377,7 +373,7 @@ class MapaStudent extends Component{
             }
             return si;
         });
-        this.setState({hidden: copyState});
+        setTimeout(()=>this.setState({hidden: copyState}), 100);        
     }
 
     deleteButtonThird = (ev, idea) =>{
@@ -393,7 +389,22 @@ class MapaStudent extends Component{
             }
             return si;
         });
-        this.setState({level: copyState});
+        this.setState({level: copyState}); 
+    }
+
+    disDeleteButtonThird = (idea) =>{
+        let copyState = this.state.level;
+        copyState.map((si)=>{
+            if (si.inde === idea){
+                if(si.style_delete.display==='inline'){
+                    si.style_delete={display:'none'};
+                } else{
+                    si.style_delete={display:'none'};
+                }
+            }
+            return si;
+        });
+        setTimeout(()=>this.setState({level: copyState}), 2000);    
     }
 
     onFinish = (ev) =>{
@@ -483,14 +494,11 @@ class MapaStudent extends Component{
         });  
 
         this.state.level.forEach((t)=>{
-            //console.log(t.nameTI);
             ideas[t.idea].push(
                 <div 
                 className="thirdIdea"
                 draggable="true"
                 onDragStart={(e)=>this.onDragStart(e, t.inde, t.idea, t.nameTI)}
-                onDoubleClick={(e)=>{this.deleteButtonThird(e, t.inde)}}
-                onClick={(e)=>{this.imprimirNombre(e, t.nameTI)}}
                 >
                     <div className={ t.nameCI } >
                         <img 
@@ -499,20 +507,20 @@ class MapaStudent extends Component{
                             onClick={ (e)=>this.deleteIdeaThird(e,t.inde, t.idea)}
                             style={ t.style_delete }
                             alt="" />
-
-                        <Center>
-                            <div className="PruebaTexto">
+                            <div 
+                            className="PruebaTexto"
+                            onClick={(e)=>{this.deleteButtonThird(e, t.inde)}}
+                            >
                                 <EditableLabel 
                                 initialValue={t.nameTI}
                                 save={value => {
-                                //console.log(`Saving '${value}'`);
-                                this.funcionPruebas(value, t.inde);
+                                this.funcionPruebas(value, t.inde);                              
                                 }}
                                 inputClass="testInputThirdIdea"
                                 labelClass="testLabelThirdIdea"
                                 />
                             </div>
-                        </Center>
+                        
                     </div>
                 </div>
             );
@@ -637,7 +645,6 @@ class MapaStudent extends Component{
                             <button 
                                 className="buttonStudentChoice"
                                 type="submit"
-                                //draggable="true"
                                 onClick={(e)=>{this.addThirdIdea(e)}}
                                 onDragStart={(e)=>this.onDragStart(e)}
                                 >
@@ -671,9 +678,7 @@ class MapaStudent extends Component{
                         </div>
                     </div>
                 </div>
-
             </div>
-        
         );
     }
 }
