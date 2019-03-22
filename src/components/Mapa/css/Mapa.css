@@ -381,10 +381,10 @@
     margin-bottom: 5px;
     z-index: 4;
     position: relative;
-    -ms-hyphens: auto;
+    /*-ms-hyphens: auto;
 	-moz-hyphens: auto;
 	-webkit-hyphens: auto;
-	hyphens: auto;
+	hyphens: auto;*/
     overflow-wrap: break-word;
 }
 
@@ -462,7 +462,7 @@
     width: 100%;
     text-align: center;
     font-family: Montserrat;
-    font-size: 9pt;
+    font-size: 7pt;
 }
 
 .balanzaMapButton{
@@ -547,16 +547,15 @@
 }
 
 .testLabelThirdIdea{
-    font-family: Montserrat;
-    font-size: 9pt;
     position: absolute; 
     left: 50%; 
     top: 50%;
     transform: translate(-50%, -50%);
     text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
     font-family: Montserrat;
-    font-size: 9pt;
+    font-size: 8pt;
     font-weight: bold;
+    width: 95%;
 }
 
 .testInputPrincipalIdea{
@@ -570,6 +569,7 @@
     text-shadow: -2px -2px 1px #000, 2px 2px 1px #000, -2px 2px 1px #000, 2px -2px 1px #000;
     font-family: Montserrat;
     font-size: 12pt;
+    overflow-wrap: break-word;
 }
 
 .testInputSecondIdea{
@@ -579,17 +579,14 @@
 
 .testLabelSecondIdea{
     font-family: Montserrat;
-    font-size: 12pt;
+    font-size: 9pt;
     position: absolute; 
     left: 50%; 
     top: 50%;
     transform: translate(-50%, -50%);
     text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
-    font-family: Montserrat;
-    font-size: 9pt;
     font-weight: bold;
     overflow-wrap: break-word;
-
 }
 
 .ispri{
@@ -999,6 +996,7 @@
     -o-transform: rotate(5deg);
     transform: rotate(5deg);
 }
+
 .buttonStudentDescargar{
     background-color: #f06522;
     border: none;

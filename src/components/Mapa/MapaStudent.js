@@ -182,8 +182,6 @@ class MapaStudent extends Component{
         return <div className="testLabelPrincipalIdea">{divlab}</div>
     }
 
-
-
     secondaryIdeaDisplay(){
 
         var result = [];
@@ -244,9 +242,10 @@ class MapaStudent extends Component{
         return result;
     }
 
-    onDragStart = (ev, data, ideaA,prueba) =>{
+    onDragStart = (ev, data, ideaA,ideaName) =>{
         ev.dataTransfer.setData("id", data);
         ev.dataTransfer.setData("ideaA", ideaA);
+        ev.dataTransfer.setData("ideaName", ideaName);
     };
 
     onDragOver = (ev) =>{
@@ -254,21 +253,26 @@ class MapaStudent extends Component{
     };
 
     onDrop = (ev, cat) =>{
-        var copyLevel = this.state.level;
         var resultado = this.verifySpace(cat);
+        var moveIdea = {};
         if (!this.state.is_finish && resultado){
             let id = ev.dataTransfer.getData("id");
             let idA = ev.dataTransfer.getData("ideaA");
-            let levels = copyLevel.filter((ti)=>{
+            let ideaName = ev.dataTransfer.getData("ideaName");
+            let levels= this.state.level.filter((ti)=>{
                 if (ti.inde === id){
-                    ti.idea=cat;
-                }
-                return ti;
+                    moveIdea.inde=id;
+                    moveIdea.idea=cat;
+                    moveIdea.nameTI=ideaName;
+                    moveIdea.style_delete = {display:'none'}
+                } 
+                return ti.inde !== id;
             });
+            levels.push(moveIdea);
             this.setState({
-                ...this.state,
-                levels
+                level: levels
             });
+            moveIdea={}
         this.funcionBorrarEspacio(idA);
         }
     };
@@ -415,20 +419,34 @@ class MapaStudent extends Component{
     onDownload = (ev) =>{
         ev.preventDefault();
         domtoimage.toPng(document.getElementById('mapStudent'), 
-            { quality: 0.95 , bgcolor: 'white'})
+            { bgcolor: 'black', useCORS: true})
         .then(function (dataUrl) {
             var link = document.createElement('a');
-            
             link.download = 'mindmap.png';
             link.href = dataUrl;
-            alert(link.href);
-            //link.click();
+            link.click();
+        })
+        .catch(function (error) {
+            alert('oops, something went wrong!', error);
         });
+        /*html2canvas(document.getElementById('mapStudent'),{})
+        .then(function (canvas) {
+            //var link = document.createElement('a');
+            //link.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+            var link = canvas;
+            document.body.appendChild(canvas);
+        });*/
+
     }
 
-    imprimirNombre = (ev, data) =>{
-        ev.preventDefault();
-        console.log(data);
+    imprimirNombre = (data) =>{
+        if(data){
+            data='Hola';
+        }else{
+            
+            data='Idea Tercera'
+        }
+        return data;
     }
 
     render(){
@@ -512,13 +530,14 @@ class MapaStudent extends Component{
                             onClick={(e)=>{this.deleteButtonThird(e, t.inde)}}
                             >
                                 <EditableLabel 
-                                initialValue={t.nameTI}
+                                initialValue={t.nameTI||'Idea Tercera'}
                                 save={value => {
                                 this.funcionPruebas(value, t.inde);                              
                                 }}
                                 inputClass="testInputThirdIdea"
                                 labelClass="testLabelThirdIdea"
                                 />
+                                
                             </div>
                         
                     </div>
@@ -646,7 +665,6 @@ class MapaStudent extends Component{
                                 className="buttonStudentChoice"
                                 type="submit"
                                 onClick={(e)=>{this.addThirdIdea(e)}}
-                                onDragStart={(e)=>this.onDragStart(e)}
                                 >
                                 <Center>
                                 <div className="buttonImagenSecundario"><img src={IconoTercero} alt="" /></div>
