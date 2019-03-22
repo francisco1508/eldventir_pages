@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/Montserrat-SemiBold.c88cecbf.ttf"
   },
   {
-    "revision": "befea6e10b74e33a2be4",
-    "url": "/eldventir_pages/static/css/main.b9146eed.chunk.css"
+    "revision": "6dc3aff0b7c6ea3007a9",
+    "url": "/eldventir_pages/static/css/main.3e1dc678.chunk.css"
   },
   {
     "revision": "d59f64f43bfe3c5fb7f5",
@@ -24,12 +24,12 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/tercera_idea.e3ff0181.svg"
   },
   {
-    "revision": "c221496de3681bf04168631001f2a117",
-    "url": "/eldventir_pages/static/media/caldero.c221496d.svg"
-  },
-  {
     "revision": "70d9d0b9bb989991ccb89a4b2cd52dfa",
     "url": "/eldventir_pages/static/media/idea_secundaria.70d9d0b9.svg"
+  },
+  {
+    "revision": "c221496de3681bf04168631001f2a117",
+    "url": "/eldventir_pages/static/media/caldero.c221496d.svg"
   },
   {
     "revision": "401c7200b3ec03520a6b0e6d744ab865",
@@ -40,16 +40,16 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/Personaje_balanza.a83da698.png"
   },
   {
-    "revision": "befea6e10b74e33a2be4",
-    "url": "/eldventir_pages/static/js/main.befea6e1.chunk.js"
-  },
-  {
-    "revision": "100b38fa184634fc89bd07a84453992c",
-    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
+    "revision": "6dc3aff0b7c6ea3007a9",
+    "url": "/eldventir_pages/static/js/main.6dc3aff0.chunk.js"
   },
   {
     "revision": "88932dadc42e1bba93b21a76de60ef7a",
     "url": "/eldventir_pages/static/media/Montserrat-Bold.88932dad.ttf"
+  },
+  {
+    "revision": "100b38fa184634fc89bd07a84453992c",
+    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
   },
   {
     "revision": "05289e866fe7e1e99d27a7a31f8d3b66",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/ico-tercer.f7fa6e8b.svg"
   },
   {
-    "revision": "776494fb6cc920fd1db4324720788d8d",
+    "revision": "c06792201ff38b11a8b711ee33970c3f",
     "url": "/eldventir_pages/index.html"
   }
 ];
