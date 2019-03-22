@@ -261,6 +261,7 @@ class MapaStudent extends Component{
             let ideaName = ev.dataTransfer.getData("ideaName");
             let levels= this.state.level.filter((ti)=>{
                 if (ti.inde === id){
+                    console.log(ideaName);
                     moveIdea.inde=id;
                     moveIdea.idea=cat;
                     moveIdea.nameTI=ideaName;
@@ -419,7 +420,7 @@ class MapaStudent extends Component{
     onDownload = (ev) =>{
         ev.preventDefault();
         domtoimage.toPng(document.getElementById('mapStudent'), 
-            { bgcolor: 'black', useCORS: true})
+            { bgcolor: 'white', useCORS: true})
         .then(function (dataUrl) {
             var link = document.createElement('a');
             link.download = 'mindmap.png';
@@ -440,7 +441,9 @@ class MapaStudent extends Component{
     }
 
     imprimirNombre = (data) =>{
+        console.log(data);
         if(data){
+            console.log(data+'+++');
             data='Hola';
         }else{
             
