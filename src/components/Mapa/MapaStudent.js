@@ -15,6 +15,7 @@ class MapaStudent extends Component{
         super(props);
         this.state = {
             principal_idea:'Idea',
+            principal_idea_editable:false,
             description: '',
             is_finish: false,
             hidden : [
@@ -26,7 +27,9 @@ class MapaStudent extends Component{
                     classContainer: "containerThirdIdeaHor thirdIdeaFirst",
                     ideaTres: 0,
                     style_delete:{visibility: 'hidden'},
-                    class_connection:"ispri"
+                    class_connection:"ispri",
+                    editable:false,
+                    name_si: 'Idea Secundaria'
                 },
                 {
                     styl: {display:'none'},
@@ -36,7 +39,9 @@ class MapaStudent extends Component{
                     classContainer: "containerThirdIdeaRig thirdIdeaTwo",
                     ideaTres: 0,
                     style_delete:{visibility: 'hidden'},
-                    class_connection:"isdoi"
+                    class_connection:"isdoi",
+                    editable:false,
+                    name_si: 'Idea Secundaria'
                 },
                 {
                     styl: {display:'none'},
@@ -46,7 +51,9 @@ class MapaStudent extends Component{
                     classContainer: "containerThirdIdeaVer thirdIdeaThird",
                     ideaTres: 0,
                     style_delete:{visibility: 'hidden'},
-                    class_connection:"istri"
+                    class_connection:"istri",
+                    editable:false,
+                    name_si: 'Idea Secundaria'
                 },
                 {
                     styl: {display:'none'},
@@ -56,7 +63,9 @@ class MapaStudent extends Component{
                     classContainer: "containerThirdIdeaLef thirdIdeaFour",
                     ideaTres: 0,
                     style_delete:{visibility: 'hidden'},
-                    class_connection:"iscui"
+                    class_connection:"iscui",
+                    editable:false,
+                    name_si: 'Idea Secundaria'
                 },
                 {
                     styl: {display:'none'},
@@ -66,7 +75,9 @@ class MapaStudent extends Component{
                     classContainer: "containerThirdIdeaHor thirdIdeaFifth",
                     ideaTres: 0,
                     style_delete:{visibility: 'hidden'},
-                    class_connection:"iscii"
+                    class_connection:"iscii",
+                    editable:false,
+                    name_si: 'Idea Secundaria'
                 },
                 {
                     styl: {display:'none'},
@@ -76,7 +87,9 @@ class MapaStudent extends Component{
                     classContainer: "containerThirdIdeaRig thirdIdeaSix",
                     ideaTres: 0,
                     style_delete:{visibility: 'hidden'},
-                    class_connection:"issei"
+                    class_connection:"issei",
+                    editable:false,
+                    name_si: 'Idea Secundaria'
                 },
                 {
                     styl: {display:'none'},
@@ -86,7 +99,9 @@ class MapaStudent extends Component{
                     classContainer: "containerThirdIdeaVer thirdIdeaSeven",
                     ideaTres: 0,
                     style_delete:{visibility: 'hidden'},
-                    class_connection:"issii"
+                    class_connection:"issii",
+                    editable:false,
+                    name_si: 'Idea Secundaria'
                 },
                 {
                     styl: {display:'none'},
@@ -96,7 +111,9 @@ class MapaStudent extends Component{
                     classContainer: "containerThirdIdeaLef thirdIdeaEight",
                     ideaTres: 0,
                     style_delete:{visibility: 'hidden'},
-                    class_connection:"isoci"
+                    class_connection:"isoci",
+                    editable:false,
+                    name_si: 'Idea Secundaria'
                 },
             ],
             level:[],
@@ -114,18 +131,9 @@ class MapaStudent extends Component{
         .catch(error => {
             console.log('No funciona', error);
         });
-        document.addEventListener('mousedown', this.handleClickOutside);
     }
 
-    handleOutsideClick(event){
-		if (!this.refs.megaMenu.contains(event.target)) {
-      this.setState({
-				clicked: false
-			});
-		} 
-    }
-
-    addClick(){
+    addSecondIdea(){
         let copyState = this.state.hidden;
         let stop = 0;
         copyState.map((si)=>{
@@ -163,10 +171,10 @@ class MapaStudent extends Component{
         });
     }
 
-    activeContainer = (data) =>{
+    activeContainer = (ideaSecond) =>{
         let copyState = this.state.hidden;
         copyState.map((si)=>{
-            if (si.noIdea === data){
+            if (si.noIdea === ideaSecond){
                     si.styl_container = {display: 'inline'};
                 }
                 return si;
@@ -174,27 +182,48 @@ class MapaStudent extends Component{
         this.setState({hidden: copyState});
     }
 
-    IdeaPrincipal(){
-        var divlab;
+    editIdeaPrincipal(){
+        var labelToShow;
         if(this.state.principal_idea === 'Idea'){
-            divlab = <EditableLabel 
+            labelToShow=<div>
+                <label 
+                className="testLabelPrincipalIdea" 
+                onClick={ (e)=>{this.cambiarTextoPrincipalIdea(e)} }
+                style={ this.state.principal_idea_editable?{display:'none'}:{display:'inline'} }
+                >{ this.state.principal_idea }</label>
+                <input 
+                    type="text" 
+                    className="testInputPrincipalIdea" 
+                    placeholder={ this.state.principal_idea }
+                    style={ this.state.principal_idea_editable?{display:'inline'}:{display:'none'} }
+                    onChange={ (e)=>this.handleChangePrincipal(e) }
+                    onBlur={(e)=>this.funcionTeclaEnterPrincipal()}
+                    onKeyPress={ event=>{
+                        if(event.key === 'Enter'){
+                            this.funcionTeclaEnterPrincipal();
+                        }
+                    }}
+                ></input>
+            </div>
+
+
+
+            /*labelToShow = <EditableLabel 
             initialValue={'Idea Principal'}
             save={value=>{
                     this.setState({principal_idea:value})
                 }}
                 inputClass="testInputPrincipalIdea"
                 labelClass="testLabelPrincipalIdea"
-            />
+            />*/
         } else {
-            divlab = <label>{this.state.principal_idea}</label>      
+            labelToShow = <label>{this.state.principal_idea}</label>      
         }
-        return <div className="testLabelPrincipalIdea">{divlab}</div>
+        return <div className="testLabelPrincipalIdea">{labelToShow}</div>
     }
 
     secondaryIdeaDisplay(){
-
         var result = [];
-
         if(this.state.is_finish){
             this.state.hidden.map((hid)=>{
                 if(hid.styl.display === 'inline'){
@@ -204,9 +233,10 @@ class MapaStudent extends Component{
                             style={hid.styl}
                          >
                             <div className="textSecondary">
-                                <EditableLabel 
-                                initialValue={'Idea Secundaria'}
-                                /> 
+                            <label 
+                                className="testLabelSecondIdea" 
+                                style={ hid.editable?{visibility:'hidden'}:{visibility:'visible'} }
+                                >{ hid.name_si }</label>
                             </div>
                             <hr className={hid.class_connection}></hr>
                         </div> 
@@ -231,16 +261,29 @@ class MapaStudent extends Component{
                             alt="" />
                             <div 
                                 className="textSecondary"
-                                onClick={(e)=>{this.deleteButtonSecond(e, hid.noIdea)}}
                             >
-                                <EditableLabel 
-                                initialValue={'Idea Secundaria'}
-                                save={value=>{
-                                    this.disDeleteButtonSecond(hid.noIdea)
-                                }}
-                                labelClass="testLabelSecondIdea"
-                                inputClass="testInputSecondIdea"
-                                /> 
+                                
+                                <label 
+                                className="testLabelSecondIdea" 
+                                onClick={ (e)=>{this.cambiarTextoSecondIdea(e, hid.noIdea)} }
+                                style={ hid.editable?{visibility:'hidden'}:{visibility:'visible'} }
+                                >{ hid.name_si }</label>
+
+                                <input 
+                                    type="text" 
+                                    className="testInputSecondIdea" 
+                                    placeholder={ hid.name_si }
+                                    style={ hid.editable?{visibility:'visible'}:{visibility:'hidden'} }
+                                    onChange={ (e)=>this.handleChangeSecond(e, hid.noIdea) }
+                                    onBlur={(e)=>this.funcionTeclaEnterSecond(hid.noIdea)}
+                                    onKeyPress={ event=>{
+                                        if(event.key === 'Enter'){
+                                            this.funcionTeclaEnterSecond(hid.noIdea);
+                                        }
+                                    }}
+                                ></input>
+
+
                             </div>
                             <hr className={hid.class_connection}></hr>
                         </div> 
@@ -251,38 +294,38 @@ class MapaStudent extends Component{
         return result;
     }
 
-    onDragStart = (ev, data, ideaA,ideaName) =>{
-        ev.dataTransfer.setData("id", data);
-        ev.dataTransfer.setData("ideaA", ideaA);
-        ev.dataTransfer.setData("ideaName", ideaName);
+    onDragStart = (ev, dataIndex, dataIdeaSecondary,dataNameIdeaThird) =>{
+        ev.dataTransfer.setData("dataIndex", dataIndex);
+        ev.dataTransfer.setData("dataIdeaSecondary", dataIdeaSecondary);
+        ev.dataTransfer.setData("ideaName", dataNameIdeaThird);
     };
 
     onDragOver = (ev) =>{
         ev.preventDefault();
     };
 
-    onDrop = (ev, cat) =>{
-        var resultado = this.verifySpace(cat);
+    onDrop = (ev, dataIdeaSecond) =>{
+        var resultado = this.verifySpace(dataIdeaSecond);
         var moveIdea = {};
         if (!this.state.is_finish && resultado){
-            let id = ev.dataTransfer.getData("id");
-            let idA = ev.dataTransfer.getData("ideaA");
-            let ideaName = ev.dataTransfer.getData("ideaName");
+            let dataIndex = ev.dataTransfer.getData("dataIndex");
+            let dataIdeaSecondary = ev.dataTransfer.getData("dataIdeaSecondary");
+            let dataNameIdeaThird = ev.dataTransfer.getData("dataNameIdeaThird");
             let levels= this.state.level.filter((ti)=>{
-                if (ti.inde === id){
-                    moveIdea.inde=id;
-                    moveIdea.idea=cat;
-                    moveIdea.nameTI=ideaName;
+                if (ti.inde === dataIndex){
+                    moveIdea.inde=dataIndex;
+                    moveIdea.idea=dataIdeaSecond;
+                    moveIdea.nameTI=dataNameIdeaThird;
                     moveIdea.style_delete = {display:'none'}
                 } 
-                return ti.inde !== id;
+                return ti.inde !== dataIndex;
             });
             levels.push(moveIdea);
             this.setState({
                 level: levels
             });
             moveIdea={}
-        this.funcionBorrarEspacio(idA);
+        this.funcionBorrarEspacio(dataIdeaSecondary);
         }
     };
 
@@ -297,11 +340,11 @@ class MapaStudent extends Component{
         this.setState({hidden: copyState});
     }
 
-    verifySpace = (idea) =>{
+    verifySpace = (ideaSecondary) =>{
         let copyState = this.state.hidden;
         var respuesta = false;
         copyState.map((si)=>{
-            if (si.noIdea === idea && si.ideaTres < 3){
+            if (si.noIdea === ideaSecondary && si.ideaTres < 3){
                     si.ideaTres+=1;
                     respuesta = true;
                 }
@@ -311,12 +354,29 @@ class MapaStudent extends Component{
         return respuesta;
     }
 
-    funcionPruebas = (ejemplo, n) =>{
+    changeNamePrincipalIdea = (dataNewName) =>{
+        if (!this.state.is_finish){
+            setTimeout(()=>this.setState({principal_idea: dataNewName}), 100);
+        }
+    }
+
+    changeNameSecondIdea = (dataNewName, dataNumberIdea) =>{
+        if (!this.state.is_finish){
+            let hiddens = this.state.hidden.filter((obj)=>{
+                if (obj.noIdea === dataNumberIdea){
+                    obj.name_si=dataNewName;
+                }
+                return obj;
+            });
+            setTimeout(()=>this.setState({hidden: hiddens}), 100);
+        }
+    }
+
+    changeNameThirdIdea = (dataNewName, dataIndex) =>{
         if (!this.state.is_finish){
             let levels = this.state.level.filter((ti)=>{
-                if (ti.inde === n){
-                    ti.nameTI=ejemplo;
-                    //ti.style_delete={display:'none'};
+                if (ti.inde === dataIndex){
+                    ti.nameTI=dataNewName;
                 }
                 return ti;
             });
@@ -331,6 +391,7 @@ class MapaStudent extends Component{
             if (si.noIdea === idea){
                     si.styl = {display: 'none'};
                     si.style_delete = {visibility: 'hidden'};
+                    si.editable=false;
                 }
                 return si;
             });
@@ -445,6 +506,38 @@ class MapaStudent extends Component{
 
     }
 
+    cambiarTextoPrincipalIdea(ev){
+        ev.preventDefault();
+        if(this.functionVerifyOtherEditingSI() && this.functionVerifyOtherEditingTI()){
+            if (!this.state.is_finish){
+                var editablePI = true;
+                setTimeout(()=>this.setState({
+                    principal_idea_editable: editablePI
+                }), 101);
+
+            }
+        }
+    }
+
+    cambiarTextoSecondIdea(ev, numberSecondIdea){
+        ev.preventDefault();
+        if(this.functionVerifyOtherEditingSI() && this.functionVerifyOtherEditingTI()){
+            this.deleteButtonSecond(ev, numberSecondIdea)
+            if (!this.state.is_finish){
+                let copyHiddens = this.state.hidden.map((obj)=>{
+                    if(obj.noIdea===numberSecondIdea){
+                        obj.editable = true;
+                    }
+                    return obj;
+                });
+                setTimeout(()=>this.setState({
+                    hidden: copyHiddens
+                }), 101);
+
+            }
+        }
+    }
+
     cambiarTexto(ev, texto){
         ev.preventDefault();
         if(this.functionVerifyOtherEditingTI()){
@@ -462,16 +555,53 @@ class MapaStudent extends Component{
 
             }
         }
-        
     }
 
-    handleChange(event, indexIT, nameIT){
+    handleChangePrincipal(event){
         if(event.target.value){
-            var valueI = event.target.value;
-            this.funcionPruebas(valueI, indexIT);
+            var newName = event.target.value;
+            this.changeNamePrincipalIdea(newName);
         } else {
-            this.funcionPruebas('Idea Tercera', indexIT);
+            this.changeNamePrincipalIdea('Idea Principal');
         }  
+    }
+
+    handleChangeSecond(event, numberSecondIdea){
+        if(event.target.value){
+            var newName = event.target.value;
+            this.changeNameSecondIdea(newName, numberSecondIdea);
+        } else {
+            this.changeNameSecondIdea('Idea Secundaria', numberSecondIdea);
+        }  
+    }
+
+    handleChange(event, indexIT){
+        if(event.target.value){
+            var newName = event.target.value;
+            this.changeNameThirdIdea(newName, indexIT);
+        } else {
+            this.changeNameThirdIdea('Idea Tercera', indexIT);
+        }  
+    }
+
+    funcionTeclaEnterPrincipal = () =>{
+        if (!this.state.is_finish){
+            var editable_status = false;
+            setTimeout(()=>this.setState({principal_idea_editable: editable_status}), 100);
+        }
+    }
+
+    funcionTeclaEnterSecond = (numberSecondIdea) =>{
+        if (!this.state.is_finish){
+            let hiddens = this.state.hidden.filter((obj)=>{
+                if (obj.noIdea === numberSecondIdea){
+                    obj.style_delete={visibility:'hidden'};
+                    obj.editable=false;
+                }
+                return obj;
+            });
+            setTimeout(()=>this.setState({hidden: hiddens}), 100);
+        }
     }
 
     funcionTeclaEnter = (indexT) =>{
@@ -487,18 +617,15 @@ class MapaStudent extends Component{
         }
     }
 
-    funcionTeclaEscape = (indexT, name) =>{
-        if (!this.state.is_finish){
-            let levels = this.state.level.filter((ti)=>{
-                if (ti.inde === indexT){
-                    ti.style_delete={display:'none'};
-                    ti.editable=false;
-                    ti.nameTI=name;
-                }
-                return ti;
-            });
-            setTimeout(()=>this.setState({level: levels}), 100);
-        }
+    functionVerifyOtherEditingSI= ()=> {
+        var flag = true;
+        this.state.hidden.map((obj)=>{
+            if(obj.editable===true){
+                flag= false;
+            }
+            return obj;
+        });
+        return flag;
     }
 
     functionVerifyOtherEditingTI= ()=> {
@@ -602,7 +729,7 @@ class MapaStudent extends Component{
                                     className="testInputThirdIdea" 
                                     placeholder={ t.nameTI }
                                     style={t.editable?{display:'inline'}:{display:'none'}}
-                                    onChange={ (e)=>this.handleChange(e, t.inde, t.nameTI) }
+                                    onChange={ (e)=>this.handleChange(e, t.inde) }
                                     onBlur={(e)=>this.funcionTeclaEnter(t.inde)}
                                     onKeyPress={ event=>{
                                         if(event.key === 'Enter'){
@@ -694,7 +821,7 @@ class MapaStudent extends Component{
                     >
                         <div className="principalIdea">
                             <div className="textPrincipal">
-                                { this.IdeaPrincipal() }
+                                { this.editIdeaPrincipal() }
                             </div>
                         </div>
                         
@@ -725,7 +852,7 @@ class MapaStudent extends Component{
                             <button 
                                 className="buttonStudentChoice"
                                 type="submit"
-                                onClick={this.addClick.bind(this)} 
+                                onClick={this.addSecondIdea.bind(this)} 
                                 >
                                 <Center>
                                 <div className="buttonImagenSecundario"><img src={IconoSecundario} alt="" /></div>
