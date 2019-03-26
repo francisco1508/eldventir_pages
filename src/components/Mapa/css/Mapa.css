@@ -261,6 +261,7 @@
     height: 79px;
     width: 80px;
     text-align: center;
+    z-index: 2;
     position: relative;
 }
 
@@ -378,7 +379,7 @@
     margin-right: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
-    z-index: 2;
+    z-index: 4;
     position: relative;
     /*-ms-hyphens: auto;
 	-moz-hyphens: auto;

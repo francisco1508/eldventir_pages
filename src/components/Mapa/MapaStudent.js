@@ -114,7 +114,15 @@ class MapaStudent extends Component{
         .catch(error => {
             console.log('No funciona', error);
         });
-        
+        document.addEventListener('mousedown', this.handleClickOutside);
+    }
+
+    handleOutsideClick(event){
+		if (!this.refs.megaMenu.contains(event.target)) {
+      this.setState({
+				clicked: false
+			});
+		} 
     }
 
     addClick(){
@@ -142,6 +150,7 @@ class MapaStudent extends Component{
                 newIdea.idea = si.noIdea;
                 newIdea.inde = si.noIdea + '-' +ind.toString();
                 newIdea.nameTI = 'Idea Tercera';
+                newIdea.editable = false;
                 newIdea.style_delete = {display:'none'}
                 this.setState({
                     hidden: copyState,
@@ -261,7 +270,6 @@ class MapaStudent extends Component{
             let ideaName = ev.dataTransfer.getData("ideaName");
             let levels= this.state.level.filter((ti)=>{
                 if (ti.inde === id){
-                    console.log(ideaName);
                     moveIdea.inde=id;
                     moveIdea.idea=cat;
                     moveIdea.nameTI=ideaName;
@@ -308,7 +316,7 @@ class MapaStudent extends Component{
             let levels = this.state.level.filter((ti)=>{
                 if (ti.inde === n){
                     ti.nameTI=ejemplo;
-                    ti.style_delete={display:'none'};
+                    //ti.style_delete={display:'none'};
                 }
                 return ti;
             });
@@ -388,23 +396,20 @@ class MapaStudent extends Component{
             if (si.inde === idea){
                 if(si.style_delete.display==='none'){
                     si.style_delete={display:'inline'};
-                } else{
-                    si.style_delete={display:'none'};
-                }     
+                }   
             }
             return si;
         });
         this.setState({level: copyState}); 
     }
 
-    disDeleteButtonThird = (idea) =>{
+    disDeleteButtonThird = (ev,idea) =>{    
         let copyState = this.state.level;
         copyState.map((si)=>{
             if (si.inde === idea){
                 if(si.style_delete.display==='inline'){
                     si.style_delete={display:'none'};
-                } else{
-                    si.style_delete={display:'none'};
+                    si.editable=false;
                 }
             }
             return si;
@@ -440,16 +445,71 @@ class MapaStudent extends Component{
 
     }
 
-    imprimirNombre = (data) =>{
-        console.log(data);
-        if(data){
-            console.log(data+'+++');
-            data='Hola';
-        }else{
-            
-            data='Idea Tercera'
+    cambiarTexto(ev, texto){
+        ev.preventDefault();
+        if(this.functionVerifyOtherEditingTI()){
+            this.deleteButtonThird(ev, texto)
+            if (!this.state.is_finish){
+                let copyLevels = this.state.level.map((ti)=>{
+                    if(ti.inde===texto){
+                        ti.editable = true;
+                    }
+                    return ti;
+                });
+                setTimeout(()=>this.setState({
+                    level: copyLevels
+                }), 101);
+
+            }
         }
-        return data;
+        
+    }
+
+    handleChange(event, indexIT, nameIT){
+        if(event.target.value){
+            var valueI = event.target.value;
+            this.funcionPruebas(valueI, indexIT);
+        } else {
+            this.funcionPruebas('Idea Tercera', indexIT);
+        }  
+    }
+
+    funcionTeclaEnter = (indexT) =>{
+        if (!this.state.is_finish){
+            let levels = this.state.level.filter((ti)=>{
+                if (ti.inde === indexT){
+                    ti.style_delete={display:'none'};
+                    ti.editable=false;
+                }
+                return ti;
+            });
+            setTimeout(()=>this.setState({level: levels}), 100);
+        }
+    }
+
+    funcionTeclaEscape = (indexT, name) =>{
+        if (!this.state.is_finish){
+            let levels = this.state.level.filter((ti)=>{
+                if (ti.inde === indexT){
+                    ti.style_delete={display:'none'};
+                    ti.editable=false;
+                    ti.nameTI=name;
+                }
+                return ti;
+            });
+            setTimeout(()=>this.setState({level: levels}), 100);
+        }
+    }
+
+    functionVerifyOtherEditingTI= ()=> {
+        var flag = true;
+        this.state.level.map((ti)=>{
+            if(ti.editable===true){
+                flag= false;
+            }
+            return ti;
+        });
+        return flag;
     }
 
     render(){
@@ -509,6 +569,7 @@ class MapaStudent extends Component{
                     onDragOver={(e)=>this.onDragOver(e)}
                 >
                     { ideas[t.noIdea] }
+                   
                 </div>
                 );           
             }
@@ -530,16 +591,25 @@ class MapaStudent extends Component{
                             alt="" />
                             <div 
                             className="PruebaTexto"
-                            onClick={(e)=>{this.deleteButtonThird(e, t.inde)}}
                             >
-                                <EditableLabel 
-                                initialValue={t.nameTI||'Idea Tercera'}
-                                save={value => {
-                                this.funcionPruebas(value, t.inde);                              
-                                }}
-                                inputClass="testInputThirdIdea"
-                                labelClass="testLabelThirdIdea"
-                                />
+                                <label 
+                                className="testLabelThirdIdea" 
+                                onClick={(e)=>{this.cambiarTexto(e, t.inde)}}
+                                style={t.editable?{display:'none'}:{display:'inline'}}
+                                >{t.nameTI}</label>
+                                <input 
+                                    type="text" 
+                                    className="testInputThirdIdea" 
+                                    placeholder={ t.nameTI }
+                                    style={t.editable?{display:'inline'}:{display:'none'}}
+                                    onChange={ (e)=>this.handleChange(e, t.inde, t.nameTI) }
+                                    onBlur={(e)=>this.funcionTeclaEnter(t.inde)}
+                                    onKeyPress={ event=>{
+                                        if(event.key === 'Enter'){
+                                            this.funcionTeclaEnter(t.inde);
+                                        }
+                                    }}
+                                ></input>
                                 
                             </div>
                         
