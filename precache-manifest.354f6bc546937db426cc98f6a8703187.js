@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/Montserrat-SemiBold.c88cecbf.ttf"
   },
   {
-    "revision": "6dc3aff0b7c6ea3007a9",
-    "url": "/eldventir_pages/static/css/main.3e1dc678.chunk.css"
+    "revision": "da5c608b1113b2c914ef",
+    "url": "/eldventir_pages/static/css/main.b9146eed.chunk.css"
   },
   {
-    "revision": "d59f64f43bfe3c5fb7f5",
-    "url": "/eldventir_pages/static/js/1.d59f64f4.chunk.js"
+    "revision": "e4a365a06cbe995b47ec",
+    "url": "/eldventir_pages/static/js/1.e4a365a0.chunk.js"
   },
   {
     "revision": "4cbf169290ddc6cae0b9",
@@ -40,16 +40,16 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/Personaje_balanza.a83da698.png"
   },
   {
-    "revision": "6dc3aff0b7c6ea3007a9",
-    "url": "/eldventir_pages/static/js/main.6dc3aff0.chunk.js"
-  },
-  {
-    "revision": "88932dadc42e1bba93b21a76de60ef7a",
-    "url": "/eldventir_pages/static/media/Montserrat-Bold.88932dad.ttf"
+    "revision": "da5c608b1113b2c914ef",
+    "url": "/eldventir_pages/static/js/main.da5c608b.chunk.js"
   },
   {
     "revision": "100b38fa184634fc89bd07a84453992c",
     "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
+  },
+  {
+    "revision": "88932dadc42e1bba93b21a76de60ef7a",
+    "url": "/eldventir_pages/static/media/Montserrat-Bold.88932dad.ttf"
   },
   {
     "revision": "05289e866fe7e1e99d27a7a31f8d3b66",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/ico-tercer.f7fa6e8b.svg"
   },
   {
-    "revision": "c06792201ff38b11a8b711ee33970c3f",
+    "revision": "0e71b73919d84d5a91ce08dadeccdd63",
     "url": "/eldventir_pages/index.html"
   }
 ];
