@@ -14,7 +14,7 @@ class MapaStudent extends Component{
     constructor(props){
         super(props);
         this.state = {
-            principal_idea:'Idea',
+            principal_idea:'Idea Principal',
             principal_idea_editable:false,
             description: '',
             is_finish: false,
@@ -131,7 +131,8 @@ class MapaStudent extends Component{
         .catch(error => {
             console.log('No funciona', error);
         });
-    }
+        
+    }    
 
     addSecondIdea(){
         let copyState = this.state.hidden;
@@ -184,38 +185,17 @@ class MapaStudent extends Component{
 
     editIdeaPrincipal(){
         var labelToShow;
-        if(this.state.principal_idea === 'Idea'){
-            labelToShow=<div>
-                <label 
-                className="testLabelPrincipalIdea" 
-                onClick={ (e)=>{this.cambiarTextoPrincipalIdea(e)} }
-                style={ this.state.principal_idea_editable?{display:'none'}:{display:'inline'} }
-                >{ this.state.principal_idea }</label>
-                <input 
-                    type="text" 
-                    className="testInputPrincipalIdea" 
-                    placeholder={ this.state.principal_idea }
-                    style={ this.state.principal_idea_editable?{display:'inline'}:{display:'none'} }
-                    onChange={ (e)=>this.handleChangePrincipal(e) }
-                    onBlur={(e)=>this.funcionTeclaEnterPrincipal()}
-                    onKeyPress={ event=>{
-                        if(event.key === 'Enter'){
-                            this.funcionTeclaEnterPrincipal();
-                        }
-                    }}
-                ></input>
-            </div>
-
-
-
-            /*labelToShow = <EditableLabel 
-            initialValue={'Idea Principal'}
+        if(!this.state.is_finish){
+            labelToShow = <EditableLabel 
+            initialValue={this.state.principal_idea}
             save={value=>{
-                    this.setState({principal_idea:value})
+                    var newNamePrincipal='Idea Principal';
+                    if(value){this.setState({principal_idea:value})}
+                    else{this.setState({principal_idea:newNamePrincipal})}
                 }}
                 inputClass="testInputPrincipalIdea"
                 labelClass="testLabelPrincipalIdea"
-            />*/
+            />
         } else {
             labelToShow = <label>{this.state.principal_idea}</label>      
         }
@@ -276,6 +256,7 @@ class MapaStudent extends Component{
                                     style={ hid.editable?{visibility:'visible'}:{visibility:'hidden'} }
                                     onChange={ (e)=>this.handleChangeSecond(e, hid.noIdea) }
                                     onBlur={(e)=>this.funcionTeclaEnterSecond(hid.noIdea)}
+                                    
                                     onKeyPress={ event=>{
                                         if(event.key === 'Enter'){
                                             this.funcionTeclaEnterSecond(hid.noIdea);
@@ -356,7 +337,7 @@ class MapaStudent extends Component{
 
     changeNamePrincipalIdea = (dataNewName) =>{
         if (!this.state.is_finish){
-            setTimeout(()=>this.setState({principal_idea: dataNewName}), 100);
+            this.setState({principal_idea: dataNewName});
         }
     }
 
@@ -392,6 +373,7 @@ class MapaStudent extends Component{
                     si.styl = {display: 'none'};
                     si.style_delete = {visibility: 'hidden'};
                     si.editable=false;
+                    si.name_si='Idea Secundaria';
                 }
                 return si;
             });
@@ -557,15 +539,6 @@ class MapaStudent extends Component{
         }
     }
 
-    handleChangePrincipal(event){
-        if(event.target.value){
-            var newName = event.target.value;
-            this.changeNamePrincipalIdea(newName);
-        } else {
-            this.changeNamePrincipalIdea('Idea Principal');
-        }  
-    }
-
     handleChangeSecond(event, numberSecondIdea){
         if(event.target.value){
             var newName = event.target.value;
@@ -587,7 +560,7 @@ class MapaStudent extends Component{
     funcionTeclaEnterPrincipal = () =>{
         if (!this.state.is_finish){
             var editable_status = false;
-            setTimeout(()=>this.setState({principal_idea_editable: editable_status}), 100);
+            this.setState({principal_idea_editable: editable_status});
         }
     }
 
@@ -638,6 +611,8 @@ class MapaStudent extends Component{
         });
         return flag;
     }
+
+    
 
     render(){
         var finishHidden = {};
@@ -731,6 +706,7 @@ class MapaStudent extends Component{
                                     style={t.editable?{display:'inline'}:{display:'none'}}
                                     onChange={ (e)=>this.handleChange(e, t.inde) }
                                     onBlur={(e)=>this.funcionTeclaEnter(t.inde)}
+                                    
                                     onKeyPress={ event=>{
                                         if(event.key === 'Enter'){
                                             this.funcionTeclaEnter(t.inde);
