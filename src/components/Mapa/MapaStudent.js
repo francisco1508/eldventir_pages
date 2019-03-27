@@ -278,7 +278,7 @@ class MapaStudent extends Component{
     onDragStart = (ev, dataIndex, dataIdeaSecondary,dataNameIdeaThird) =>{
         ev.dataTransfer.setData("dataIndex", dataIndex);
         ev.dataTransfer.setData("dataIdeaSecondary", dataIdeaSecondary);
-        ev.dataTransfer.setData("ideaName", dataNameIdeaThird);
+        ev.dataTransfer.setData("dataNameIdeaThird", dataNameIdeaThird);
     };
 
     onDragOver = (ev) =>{
