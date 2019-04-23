@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './css/Mapa.css'
 import IconoTerminar from './images/ico-terminar.svg'
 import IconoDescargar from './images/ico-descarga.svg'
-import EditableLabel from 'react-editable-label'
 import IconoSecundario from './images/ico-secundaria.svg'
 import IconoTercero from './images/ico-tercer.svg'
 import Center from 'react-center'
@@ -14,7 +13,7 @@ class MapaStudent extends Component{
     constructor(props){
         super(props);
         this.state = {
-            principal_idea:'Idea Principal',
+            principal_idea:'',
             principal_idea_editable:false,
             description: '',
             is_finish: false,
@@ -120,7 +119,7 @@ class MapaStudent extends Component{
         };
     }
 
-    componentDidMount() {
+    UNSAFE_componentWillMount() {
         axios.get(`http://localhost:8000/v1/mentals/`)
         .then(res=>{       
             this.setState({
@@ -186,21 +185,41 @@ class MapaStudent extends Component{
     editIdeaPrincipal(){
         var labelToShow;
         if(!this.state.is_finish){
-            labelToShow = <EditableLabel 
-            initialValue={this.state.principal_idea}
-            save={value=>{
-                    var newNamePrincipal='Idea Principal';
-                    if(value){this.setState({principal_idea:value})}
-                    else{this.setState({principal_idea:newNamePrincipal})}
+
+            labelToShow = 
+            <div>
+            <label 
+            className="testLabelPrincipalIdea" 
+            onClick={ (e)=>{this.cambiarTextoPrincipalIdea(e)} }
+            style={ this.state.principal_idea_editable?{display:'none'}:{display:'inline'} }
+            >{ this.state.principal_idea?this.state.principal_idea:'Idea Principal' }</label>
+
+            <input 
+                type="text" 
+                className="testInputSecondIdea" 
+                placeholder={ this.state.principal_idea }
+                style={ this.state.principal_idea_editable?{display:'inline'}:{display:'none'} }
+                onChange={ (e)=>this.handleChangePrimary(e) }
+                onBlur={(e)=>this.modificarTextoPrincipalIdea(e)}
+                
+                onKeyPress={ event=>{
+                    if(event.key === 'Enter'){
+                   this.modificarTextoPrincipalIdea(event);
+                    }
                 }}
-                inputClass="testInputPrincipalIdea"
-                labelClass="testLabelPrincipalIdea"
-            />
+            ></input></div>
         } else {
             labelToShow = <label>{this.state.principal_idea}</label>      
         }
         return <div className="testLabelPrincipalIdea">{labelToShow}</div>
     }
+
+    handleChangePrimary(event){
+        var changed = event.target.value;
+        if(!changed){changed='Idea Principal'};
+        this.setState({principal_idea: changed});
+    }
+
 
     secondaryIdeaDisplay(){
         var result = [];
@@ -501,6 +520,14 @@ class MapaStudent extends Component{
         }
     }
 
+    modificarTextoPrincipalIdea(ev){
+        ev.preventDefault();
+        var editablePI = false;
+        setTimeout(()=>this.setState({
+            principal_idea_editable: editablePI
+        }), 101);  
+    }
+
     cambiarTextoSecondIdea(ev, numberSecondIdea){
         ev.preventDefault();
         if(this.functionVerifyOtherEditingSI() && this.functionVerifyOtherEditingTI()){
@@ -780,7 +807,9 @@ class MapaStudent extends Component{
 
 
         return (
-            <div id="mapStudent" className="mapStudent">
+            <div className="row">
+            <div className="col-md-2 col-lg-2"></div>
+            <div id="mapStudent" className="col-md-8 col-lg-8 col-xl-8 mapStudent">
                 <div className="mapStudentBand">
                     <div className="mapStudentText">
                         <div className="mapStudentTextIns fontTB">
@@ -791,7 +820,8 @@ class MapaStudent extends Component{
                         </div>
                     </div>
                 </div>
-                <div id="mapStudentContainer" className="mapStudentContainer">
+                <div id="mapStudentContainer" className="row mapStudentContainer">
+                    <div className="">
                     <div 
                         className={ this.state.is_finish? "mapLeftSideFinished": "mapLeftSide" }
                     >
@@ -822,17 +852,22 @@ class MapaStudent extends Component{
                         { connections.ideaEight }
 
                     </div>
+                    </div>
+                    <div className="">
                     <div className="mapRightSide">
                     
                         <div className="mapStudentConceptsDisplay" style={finishHidden}>
+                           
+
                             <button 
                                 className="buttonStudentChoice"
                                 type="submit"
-                                onClick={this.addSecondIdea.bind(this)} 
+                                onClick={this.addSecondIdea.bind(this)}
                                 >
                                 <Center>
                                 <div className="buttonImagenSecundario"><img src={IconoSecundario} alt="" /></div>
-                                <div className="buttonStudentAlineacionTexto">Agregar idea secundaria</div>
+                                <div className="buttonStudentAlineacionTexto fontsizeText"
+                                >Agregar idea secundaria</div>
                                 </Center>
                             </button>
                         </div>
@@ -844,7 +879,7 @@ class MapaStudent extends Component{
                                 >
                                 <Center>
                                 <div className="buttonImagenSecundario"><img src={IconoTercero} alt="" /></div>
-                                <div className="buttonStudentAlineacionTexto">Agregar idea tercera</div>
+                                <div className="buttonStudentAlineacionTexto fontsizeText">Agregar idea tercera</div>
                                 </Center>
                             </button>
                         </div>
@@ -873,6 +908,8 @@ class MapaStudent extends Component{
                     </div>
                 </div>
             </div>
+            </div>
+        </div>
         );
     }
 }

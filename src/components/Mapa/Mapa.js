@@ -12,7 +12,8 @@ class Mapa extends Component{
     render(){
         if (this.state.userData === 'teacher'){
             return <MapaTeacher />;
-        } else{
+        }
+        else{
             return <MapaStudent />
         }
         
