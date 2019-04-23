@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/eldventir_pages/precache-manifest.551a54930b84d7a845f85e10d2f70545.js"
+  "/eldventir_pages/precache-manifest.6cef6579067651c5cbf0b7a51e771bb7.js"
 );
 
 workbox.clientsClaim();
