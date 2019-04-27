@@ -11,6 +11,7 @@ import Mapa from './components/Mapa/Mapa'
 import './index.css';
 
 import * as serviceWorker from './serviceWorker';
+import Dibujo from './components/Dibujo/Dibujo';
 
 /*render(
     <Router>
@@ -20,7 +21,7 @@ import * as serviceWorker from './serviceWorker';
 );*/
 
 render(
-    <Mapa />
+    <Dibujo />
     , document.getElementById('root')
 );
 

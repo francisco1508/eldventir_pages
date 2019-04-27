@@ -496,10 +496,10 @@ div[title="Triangulo"] {
 .lc-drawing canvas.animation {
     width: 100% !important;
     height: 80vh !important;
-    animation: desinvolvec 10s;
-    -moz-animation: desinvolvec 10s;
+    animation: desinvolvec 3s;
+    -moz-animation: desinvolvec 3s;
     /* Firefox */
-    -webkit-animation: desinvolvec 10s;
+    -webkit-animation: desinvolvec 3s;
     background: url('../PAINT/fondo_canvas.svg');
     background-position: center;
     background-repeat: no-repeat;
@@ -537,9 +537,9 @@ div[title="Triangulo"] {
     right: -30px;
     top: -52px;
     height: 96vh;
-    animation: desinvolve 10s;
-    -moz-animation: desinvolve 10s;
-    -webkit-animation: desinvolve 10s;
+    animation: desinvolve 3s;
+    -moz-animation: desinvolve 3s;
+    -webkit-animation: desinvolve 3s;
 }
 @keyframes desinvolve{
     from {right: 1290px;} 
@@ -657,4 +657,10 @@ circle{
 }
 .polygon-toolbar{
     display: none!important;
+}
+
+.imagenDibujoTerminar{
+    width: 20px !important;
+    height: 20px !important;
+    vertical-align: middle !important;
 }
