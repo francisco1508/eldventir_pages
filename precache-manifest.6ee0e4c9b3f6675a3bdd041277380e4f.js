@@ -48,12 +48,12 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/Montserrat-SemiBold.c88cecbf.ttf"
   },
   {
-    "revision": "100b38fa184634fc89bd07a84453992c",
-    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
-  },
-  {
     "revision": "88932dadc42e1bba93b21a76de60ef7a",
     "url": "/eldventir_pages/static/media/Montserrat-Bold.88932dad.ttf"
+  },
+  {
+    "revision": "100b38fa184634fc89bd07a84453992c",
+    "url": "/eldventir_pages/static/media/Montserrat-Light.100b38fa.ttf"
   },
   {
     "revision": "05289e866fe7e1e99d27a7a31f8d3b66",
@@ -92,24 +92,24 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/text.75bd9a89.svg"
   },
   {
+    "revision": "5eaf37e9d6ba1eb4ce03ec1348777561",
+    "url": "/eldventir_pages/static/media/arrow.5eaf37e9.svg"
+  },
+  {
     "revision": "46cc242b8e91b519ea6af08cb4347b80",
     "url": "/eldventir_pages/static/media/reset.46cc242b.svg"
+  },
+  {
+    "revision": "48fb131631b2204a55dd3a13bb0325c2",
+    "url": "/eldventir_pages/static/media/bucket.48fb1316.svg"
   },
   {
     "revision": "ec0bd0c91faab9de1b1b12f03646d362",
     "url": "/eldventir_pages/static/media/line.ec0bd0c9.svg"
   },
   {
-    "revision": "26a99a244b4bdf9e9d9b1317fdcb124f",
-    "url": "/eldventir_pages/static/media/pencil.26a99a24.svg"
-  },
-  {
-    "revision": "5eaf37e9d6ba1eb4ce03ec1348777561",
-    "url": "/eldventir_pages/static/media/arrow.5eaf37e9.svg"
-  },
-  {
-    "revision": "48fb131631b2204a55dd3a13bb0325c2",
-    "url": "/eldventir_pages/static/media/bucket.48fb1316.svg"
+    "revision": "ae708d68194aa175518d81d2818c3ed6",
+    "url": "/eldventir_pages/static/media/square.ae708d68.svg"
   },
   {
     "revision": "5af5d61ee4fea74e1cad86c117fd0e08",
@@ -120,8 +120,8 @@ self.__precacheManifest = [
     "url": "/eldventir_pages/static/media/triangle.849cd51a.svg"
   },
   {
-    "revision": "ae708d68194aa175518d81d2818c3ed6",
-    "url": "/eldventir_pages/static/media/square.ae708d68.svg"
+    "revision": "26a99a244b4bdf9e9d9b1317fdcb124f",
+    "url": "/eldventir_pages/static/media/pencil.26a99a24.svg"
   },
   {
     "revision": "372451a3688fbaf65ed8282b1414c440",
