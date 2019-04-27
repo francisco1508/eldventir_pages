@@ -1,11 +1,11 @@
 // Dependencies
 import React from 'react';
 import { render } from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
+//import {BrowserRouter as Router} from 'react-router-dom';
 
 // Routes
 //import AppRoutes from './routes';
-import Mapa from './components/Mapa/Mapa'
+//import Mapa from './components/Mapa/Mapa'
 
 //Assets
 import './index.css';

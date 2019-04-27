@@ -391,7 +391,7 @@ class Dibujo extends Component {
             <main className="main_content" id="dibujoSection">
               <Instructions instuctionsText={this.state.instrucciones}> </Instructions>
               <section className="draw">
-                <img src={ Rollo } className="rollo_izq"/>
+                <img src={ Rollo } className="rollo_izq" alt=""/>
                 <LC.LiterallyCanvasReactComponent
                 imageURLPrefix = "/img"
                 backgroundColor= "#0000"
@@ -402,7 +402,7 @@ class Dibujo extends Component {
                 strokeWidths={[3,5,10]}
                 var tools = {MainTools}
                 onInit={this.OnInitPaint}/>
-                <img src={ Rollo } className="rollo_der" id="rollo_der"/>
+                <img src={ Rollo } className="rollo_der" id="rollo_der" alt=""/>
                 <div id="colorsPallete">
                 <ul>
                     <li id="#96161B" style={{backgroundColor:'#96161B'}}></li>
